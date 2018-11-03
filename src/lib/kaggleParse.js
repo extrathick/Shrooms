@@ -2,13 +2,13 @@
 
 const fs = require('fs');
 
-const outputfile =  './data/out.json';
+const outputfile =  './data/kaggle.json';
 
 console.log(process.cwd());
 // the node docs say you can do relative files buuuut???
 
 // this opens our file and reads the data out to buffer(data)
-fs.open(`${process.cwd()}/src/lib/rawkaggle`, 'r', (err, fd) => {
+fs.open(`${process.cwd()}/lib/rawkaggle`, 'r', (err, fd) => {
     if (err) throw err;
     // console.log(fd);
     var buffer = Buffer.alloc(4096);

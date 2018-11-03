@@ -1,4 +1,4 @@
-const json = require('../data/out.json');
+const json = require('../data/kaggle.json');
 /* This function takes a character and the category and will return the "expanded version" of the character
    example: lookupChar('a', 'population') will return "abundant"
    it is worth noting that edibility is 'classes'
