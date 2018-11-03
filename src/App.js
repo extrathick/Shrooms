@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import logo from './pics/logo.svg'; //Import components/Images from folders like this
 import './App.css';
+import TestComponent from './components/test'
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
           >
             Learn React
           </a>
+          <TestComponent />
         </header>
       </div>
     );
