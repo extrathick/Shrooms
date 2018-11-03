@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 
-const outputfile =  'out.json';
+const outputfile =  './data/out.json';
 
 console.log(process.cwd());
 // the node docs say you can do relative files buuuut???
@@ -28,15 +28,15 @@ fs.open(`${process.cwd()}/src/lib/rawkaggle`, 'r', (err, fd) => {
 function parse(data) {
     // console.log(data);
     let readableData = data.split('\n');
-    jsonArray = [];
+    let jsonArray = [];
     // look at every line
     for(let line of readableData){
-        split = line.split(': ');
-        identifier = split[0];
-        values = split[1];
+        let split = line.split(': ');
+        let identifier = split[0];
+        let values = split[1];
         // console.log(`id=== ${identifier} vals=== ${values}`);
-        valueSplit = values.split(',');
-        valueLookupArray = [];
+        let valueSplit = values.split(',');
+        let valueLookupArray = [];
         // then look at all the values
         for(let keyValue of valueSplit){
             let pair = keyValue.split('=');
