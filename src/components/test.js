@@ -1,7 +1,6 @@
 import React from 'react';
 import lookup from '../lib/csvValueLookup';
 import ReactEcharts from 'echarts-for-react';
-import json from '../data/mushrooms.json';
 
 class TestComponent extends React.Component {
     render(){

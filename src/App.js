@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import logo from './pics/logo.svg'; //Import components/Images from folders like this
 import './App.css';
 import TestComponent from './components/test'
-import GenericEchartsSunburst from './components/ediblevotherpie'
+import GenericEchartsSunburst from './components/GenericEchartsSunburst'
 
 class App extends Component {
   render() {

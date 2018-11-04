@@ -9,7 +9,8 @@ class GenericEchartsSunburst extends React.Component{
     constructor(props){
         super(props);
         this.look = new lookup();
-        this.computed = this.compute(this.props.inner, this.props.outer);
+        const { inner, outer } = props;
+        this.computed = this.compute(inner, outer);
         let data = [];
         // build up the data
         for(let valueInner of this.computed){
