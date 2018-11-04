@@ -5,7 +5,7 @@ import json from '../data/mushrooms.json';
 
 class TestComponent extends React.Component {
     render(){
-        console.log(json.header);
+        // console.log(json.header);
         const option = {
             xAxis: {
                 type: 'category',
@@ -15,6 +15,7 @@ class TestComponent extends React.Component {
                 type: 'value'
             },
             series: [{
+                tooltip: {},
                 data: [820, 932, 901, 934, 1290, 1330, 1320],
                 type: 'line'
             }]
