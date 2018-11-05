@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import logo from './pics/logo.svg'; //Import components/Images from folders like this
 import './App.css';
 import TestComponent from './components/test'
-import GenericEchartsSunburst from './components/GenericEchartsSunburst'
+import SunburstController from './components/SunburstController'
 
 class App extends Component {
   render() {
@@ -24,10 +24,7 @@ class App extends Component {
             Learn React
           </a>
           <TestComponent />
-          <GenericEchartsSunburst
-          inner="classes"
-          outer="cap-surface"
-           />
+          <SunburstController />
         </header>
       </div>
     );

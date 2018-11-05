@@ -9,7 +9,14 @@ class GenericEchartsSunburst extends React.Component{
     constructor(props){
         super(props);
         this.look = new lookup();
-        const { inner, outer } = props;
+        this.state = {
+            option: null
+        }
+        this.state.option = this.getOption();
+    }
+
+    getOption(){
+        const { inner, outer } = this.props;
         this.computed = this.compute(inner, outer);
         let data = [];
         // build up the data
@@ -26,7 +33,7 @@ class GenericEchartsSunburst extends React.Component{
             data.push(obj);
         }
         // set the option
-        this.option = {
+        let option = {
             series: {
                 type: 'sunburst',
                 // highlightPolicy: 'ancestor',
@@ -37,7 +44,9 @@ class GenericEchartsSunburst extends React.Component{
                 }
             }
         };
+        return option;
     }
+
     // This does the math of the sunburst. I belive this to be correct
     compute(innerCategory, outerCategory){
         // Small function to make the objects to have a number value that is initially 0
@@ -77,7 +86,7 @@ class GenericEchartsSunburst extends React.Component{
         // We may need to change the style, or just pass in style as a prop
         return (
             <ReactEcharts 
-                option={this.option}
+                option={this.state.option}
                 style={{height: '500px', width: '100%'}}
             />
         )
