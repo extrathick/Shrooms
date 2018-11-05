@@ -82,6 +82,14 @@ class GenericEchartsSunburst extends React.Component{
         return inner;
     }
 
+    componentDidUpdate(prevProps){
+        if(this.props !== prevProps){
+            this.setState({
+                option: this.getOption()
+            });
+        }
+    }
+
     render(){
         // We may need to change the style, or just pass in style as a prop
         return (

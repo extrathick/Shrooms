@@ -1,4 +1,5 @@
 const json = require('../data/kaggle.json');
+const mushroom = require('../data/mushrooms.json');
 
 class lookup{
     /* This function takes a character and the category and will return the "expanded version" of the character
@@ -39,6 +40,11 @@ class lookup{
                 return i;
             }
         }
+    }
+
+    // Returns all categories
+    getCategories(){
+        return mushroom.header
     }
 }
 

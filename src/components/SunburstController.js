@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import GenericEchartsSunburst from '../components/GenericEchartsSunburst';
+import lookup from '../lib/csvValueLookup';
 
 export default class SunburstController extends Component {
     constructor(props){
         super(props);
+        this.look = new lookup();
+        this.headers = this.look.getCategories();
         this.state = {
-            inner: 'classes',
+            inner: 'class',
             outer: 'bruises'
         }
     }
@@ -32,8 +35,8 @@ export default class SunburstController extends Component {
     render() {
         return (
         <div style={{width: '100%'}}>
-        <Dropdown items={['classes', 'gill-color']} onChange={(event) => this.setInner(event.target.value)}/>
-        <Dropdown items={['bruises', 'classes']} onChange={(event) => this.setOuter(event.target.value)}/>
+        <Dropdown items={this.headers} onChange={(event) => this.setInner(event.target.value)} selected={this.state.inner}/>
+        <Dropdown items={this.headers} onChange={(event) => this.setOuter(event.target.value)} selected={this.state.outer}/>
             <GenericEchartsSunburst 
                 inner={this.state.inner}
                 outer={this.state.outer}
@@ -45,10 +48,15 @@ export default class SunburstController extends Component {
 }
 const Dropdown = (props) => {
     let items = props.items.map(item => {
+        if(props.selected){
+            if(props.selected === item){
+                return <option key={item} value={item} selected={"selected"}>{item}</option>
+            }
+        }
         return <option key={item} value={item}>{item}</option>
     });
     return (
-      <select onChange={props.onChange}>
+      <select selected={props.selected} onChange={props.onChange}>
           {items}
       </select>
     )
