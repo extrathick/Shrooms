@@ -5,6 +5,8 @@ import logo from './pics/logo.svg'; //Import components/Images from folders like
 import './App.css';
 import TestComponent from './components/test'
 import SunburstController from './components/SunburstController'
+import OdorSVG from './components/OdorSVG'
+import ClassOdorSVG from './components/ClassOdorSVG'
 
 class App extends Component {
   render() {
@@ -25,6 +27,8 @@ class App extends Component {
           </a>
           <TestComponent />
           <SunburstController />
+          <OdorSVG />
+          <ClassOdorSVG />
         </header>
       </div>
     );
