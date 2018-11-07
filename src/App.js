@@ -7,7 +7,6 @@ import TestComponent from './components/test'
 import SunburstController from './components/SunburstController'
 import OdorSVG from './components/OdorSVG'
 import ClassOdorSVG from './components/ClassOdorSVG'
-import EdiblePoisonous from './components/EdiblePoisonous'
 
 class App extends Component {
   render() {
@@ -16,7 +15,6 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
 
-          <EdiblePoisonous />
           <TestComponent />
           <SunburstController />
           <OdorSVG />
