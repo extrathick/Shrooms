@@ -22,6 +22,10 @@ class GenericBarChart extends React.Component{
     getOption(title, data, category){
         let header = this.look.getData(category);
         option.title.text = title;
+        // header.forEach((name, index) => {
+        //     option.xAxis.data.push(name[index]);
+        // });
+        option.xAxis.data = ["abundant", "clustered", "numerous", "scattered", "several", "solitary"];
         option.series[0].data = data;
         option.series[0].name = header[0];
         return option;
@@ -30,20 +34,17 @@ class GenericBarChart extends React.Component{
     compileData(category, colors) {
         let data = this.look.getData(category);
         let series = [];
-        let dataObj = {
-            data: []
-        }
+        let dataArr = [];
         data[1].forEach((count, index) => {
             if (colors.length > 0 && colors.length >= data[1].length) {
-                let compiled = {
+                dataArr.push({
                     value:count,
                     itemStyle: { color: colors[index]}
-                }
-                dataObj.data.push(compiled);
+                });
             }
-            series.push(dataObj)            
+                       
         });
-
+        series.push(dataArr);
         return series;        
     }
 
@@ -51,14 +52,11 @@ class GenericBarChart extends React.Component{
     render(){
         console.log(this.state.option);
         return (
-            <div>
             <ReactEcharts 
                 option={this.state.option}
                 style={{height: '500px', width: '100%'}}
             />
 
-            
-            </div>
 
 
         )
@@ -71,14 +69,24 @@ export default GenericBarChart;
 let  option = {
     title: {
         text: 'placeholder',
-        textStyle: {color: "white"},
+        textStyle: { color: "white" },
         x: 'center',
         y: 'top'
-      },
-      series: [{
+    },
+    xAxis: {
+        type: 'category',
+        data: [],
+        axisLabel: {
+            textStyle: { color: "white" }
+        }
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
         name: 'placeholder',
-        type: 'bar',              
-        data: 'placeholder'             
-      }
+        type: 'bar',
+        data: 'placeholder'
+    }
     ]       
 };
