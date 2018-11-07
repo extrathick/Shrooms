@@ -21,11 +21,11 @@ class GenericBarChart extends React.Component{
 
     getOption(title, data, category){
         let header = this.look.getData(category);
+        
         option.title.text = title;
-        // header.forEach((name, index) => {
-        //     option.xAxis.data.push(name[index]);
-        // });
-        option.xAxis.data = ["abundant", "clustered", "numerous", "scattered", "several", "solitary"];
+        header[0].forEach((name, index) => {
+            option.xAxis.data.push(name);
+        });
         option.series[0].data = data;
         option.series[0].name = header[0];
         return option;
