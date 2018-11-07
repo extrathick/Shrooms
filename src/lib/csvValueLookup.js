@@ -54,7 +54,7 @@ class lookup{
 
         mushroom.data.forEach((mushroom) => {
             types.forEach((type, index) => {
-                if (mushroom[slot] == type.key) {
+                if (mushroom[slot] === type.key) {
                     count[index]++;
                 }
             });

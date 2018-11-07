@@ -7,6 +7,7 @@ import TestComponent from './components/test'
 import SunburstController from './components/SunburstController'
 import OdorSVG from './components/OdorSVG'
 import ClassOdorSVG from './components/ClassOdorSVG'
+import GenericBarChart from './components/GenericBarChart';
 
 class App extends Component {
   render() {
@@ -14,7 +15,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-
+          <GenericBarChart category='population'/>
           <TestComponent />
           <SunburstController />
           <OdorSVG />
