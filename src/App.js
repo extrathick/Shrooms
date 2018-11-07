@@ -15,7 +15,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <GenericBarChart category='population'/>
+          <GenericBarChart title='Population Shrooms' category='population' colors={['red', 'blue','red', 'blue','red', 'blue']} />
           <TestComponent />
           <SunburstController />
           <OdorSVG />

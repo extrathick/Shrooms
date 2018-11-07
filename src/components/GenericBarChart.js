@@ -15,29 +15,52 @@ class GenericBarChart extends React.Component{
             option: null,
             data: null,
         }
-        this.state.data = this.compileData();
-        this.state.option = this.getOption();
+        this.state.data = this.compileData(this.category, this.colors);
+        this.state.option = this.getOption(this.title, this.state.data, this.category);
     }
 
-    getOption(){
-      
+    getOption(title, data, category){
+        let header = this.look.getData(category);
+        option.title.text = title;
+        option.series[0].data = data;
+        option.series[0].name = header[0];
+        return option;
     }
 
-    compileData(){
+    compileData(category, colors) {
+        let data = this.look.getData(category);
+        let series = [];
+        let dataObj = {
+            data: []
+        }
+        data[1].forEach((count, index) => {
+            if (colors.length > 0 && colors.length >= data[1].length) {
+                let compiled = {
+                    value:count,
+                    itemStyle: { color: colors[index]}
+                }
+                dataObj.data.push(compiled);
+            }
+            series.push(dataObj)            
+        });
 
+        return series;        
     }
 
 
     render(){
-        
+        console.log(this.state.option);
         return (
-            // <ReactEcharts 
-            //     option={this.state.option}
-            //     style={{height: '500px', width: '100%'}}
-            // />
             <div>
+            <ReactEcharts 
+                option={this.state.option}
+                style={{height: '500px', width: '100%'}}
+            />
 
+            
             </div>
+
+
         )
     }
 }
@@ -53,11 +76,6 @@ let  option = {
         y: 'top'
       },
       series: [{
-        name: 'placeholder',
-        type: 'bar',              
-        data: 'placeholder'             
-      },
-        {
         name: 'placeholder',
         type: 'bar',              
         data: 'placeholder'             

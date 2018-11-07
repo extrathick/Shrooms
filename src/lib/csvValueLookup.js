@@ -42,7 +42,7 @@ class lookup{
         }
     }
 
-    //takes a category and returns the number of times a subcategory appears in the mushroom dataset
+    //takes a category and returns the number of times a subcategory appears in the mushroom dataset as an array
     getCount(category) {
         let count = [];
         let types = this.getAllPossible(category);
@@ -63,7 +63,8 @@ class lookup{
         return count;        
     }
 
-    //takes a category and returns the subcategory and its count in the mushroom dataset
+    //takes a category and returns the subcategory and its count in the mushroom dataset as an array. 
+    //array[0] = headers array[1] = count
     getData(category){
         let data = [];
         let subcategories = [];
