@@ -23,7 +23,6 @@ export default class SunburstController extends Component {
     }
 
     setOuter = (outer) => {
-        console.log('outer');
         this.setState((state, props) => {
             return {
                 inner: state.inner,
