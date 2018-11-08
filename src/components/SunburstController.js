@@ -48,15 +48,10 @@ export default class SunburstController extends Component {
 }
 const Dropdown = (props) => {
     let items = props.items.map(item => {
-        if(props.selected){
-            if(props.selected === item){
-                return <option key={item} value={item} selected={"selected"}>{item}</option>
-            }
-        }
         return <option key={item} value={item}>{item}</option>
     });
     return (
-      <select selected={props.selected} onChange={props.onChange}>
+      <select value={props.selected} onChange={props.onChange}>
           {items}
       </select>
     )
