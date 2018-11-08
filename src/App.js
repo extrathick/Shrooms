@@ -5,7 +5,9 @@ import logo from './pics/logo.svg'; //Import components/Images from folders like
 import './App.css';
 import TestComponent from './components/test'
 import SunburstController from './components/SunburstController'
-import TryingHard from './components/mushStackChart'
+import OdorSVG from './components/OdorSVG'
+import ClassOdorSVG from './components/ClassOdorSVG'
+import GenericBarChart from './components/GenericBarChart';
 
 class App extends Component {
   render() {
@@ -13,20 +15,11 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <GenericBarChart title='Population Shrooms' category='population' colors={['red', 'blue','red', 'blue','red', 'blue']} />
           <TestComponent />
           <SunburstController />
-          <TryingHard />
+          <OdorSVG />
+          <ClassOdorSVG />
         </header>
       </div>
     );
