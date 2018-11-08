@@ -26,25 +26,24 @@ class GenericBarChart extends React.Component{
         header[0].forEach((name, index) => {
             option.xAxis.data.push(name);
         });
-        option.series[0].data = data;
-        option.series[0].name = header[0];
+        option.series.push({data, type:'bar'});   
+        // option.series[0].name = header[0];
         return option;
     }
 
     compileData(category, colors) {
         let data = this.look.getData(category);
         let series = [];
-        let dataArr = [];
         data[1].forEach((count, index) => {
             if (colors.length > 0 && colors.length >= data[1].length) {
-                dataArr.push({
+                series.push({
                     value:count,
                     itemStyle: { color: colors[index]}
                 });
             }
                        
         });
-        series.push(dataArr);
+        
         return series;        
     }
 
@@ -83,10 +82,24 @@ let  option = {
     yAxis: {
         type: 'value'
     },
-    series: [{
-        name: 'placeholder',
-        type: 'bar',
-        data: 'placeholder'
-    }
-    ]       
+series: 
+[
+    // {
+    //     data: [
+    //         {
+    //             value: 120,
+    //             itemStyle: {color: 'blue'},
+    //         },
+    //         {
+    //             value: 200,
+    //             itemStyle: {color: 'red'},
+    //         },
+    //         {
+    //             value: 150,
+    //             itemStyle: {color: 'green'},
+    //         }
+    //     ],
+    //     type: 'bar'
+    // }
+]      
 };
