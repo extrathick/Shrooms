@@ -5,6 +5,7 @@ import logo from './pics/logo.svg'; //Import components/Images from folders like
 import './App.css';
 import TestComponent from './components/test'
 import SunburstController from './components/SunburstController'
+import TryingHard from './components/mushStackChart'
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
           </a>
           <TestComponent />
           <SunburstController />
+          <TryingHard />
         </header>
       </div>
     );
