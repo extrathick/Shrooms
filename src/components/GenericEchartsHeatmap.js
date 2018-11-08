@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import ReactEcharts from 'echarts-for-react';
+import lookup from '../lib/csvValueLookup';
+import json from '../data/mushrooms.json';
 
 export default class GenericEchartsHeatmap extends Component {
 
     constructor(props){
         super(props);
+        this.look = new lookup();
+        let newData = this.compute();
         // app.title = '笛卡尔坐标系上的热力图';
         
         var hours = ['12a', '1a', '2a', '3a', '4a', '5a', '6a',
@@ -70,6 +74,32 @@ export default class GenericEchartsHeatmap extends Component {
             }]
         };
         this.state = {option: option};
+    }
+
+    compute = () => {
+        let lookupLib = new lookup();
+        let computeHelper = (obj) => {
+            let retObj = {}
+            retObj.key = obj.key;
+            retObj.value = obj.value;
+            retObj.number = 0;
+            retObj.index = lookupLib.getCategoryNumber(this.value);
+            return retObj;
+        }
+        let data = [];
+        let header = this.look.getCategories();
+        let x = 'class';
+        let y = 'bruises';
+        let xItems = this.look.getAllPossible(x).map(computeHelper);
+        let yItems = this.look.getAllPossible(y).map(computeHelper);
+        console.log(xItems);
+        for(let datum of json.data){
+            for(let xItem of xItems){
+                for(let yItem of yItems){
+                    
+                }
+            }
+        }
     }
 
     render() {
