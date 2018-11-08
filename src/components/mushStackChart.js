@@ -8,7 +8,7 @@ class TryingHard extends React.Component {
         const look = new lookup();
         
         const option = {
-        color: ['324E38','274E2F','1B5C28','157328', '10952B', '0FB932'],
+        color: ['#FFFFFF','#FFF333'],
         tooltip: {
             trigger: 'axis',
             axisPointer: {
