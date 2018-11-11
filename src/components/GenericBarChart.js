@@ -3,9 +3,9 @@ import lookup from '../lib/csvValueLookup';
 import ReactEcharts from 'echarts-for-react';
 
 
-class GenericBarChart extends React.Component{
+class GenericBarChart extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.category = this.props.category;
         this.title = this.props.title;
@@ -19,9 +19,9 @@ class GenericBarChart extends React.Component{
         this.state.option = this.getOption(this.title, this.state.data, this.category);
     }
 
-    getOption(title, data, category){
+    getOption(title, data, category) {
         let header = this.look.getData(category);
-        let  option = {
+        let option = {
             title: {
                 text: 'placeholder',
                 textStyle: { color: "white" },
@@ -38,14 +38,28 @@ class GenericBarChart extends React.Component{
             yAxis: {
                 type: 'value'
             },
-        series: []
+            series: [],
+            tooltip: {},
+            toolbox: {
+                show: true,
+                orient: 'vertical',
+                left: 'right',
+                top: 'center',
+                feature: {
+                    mark: { show: true },
+                    dataView: { show: true, readOnly: false },
+                    magicType: { show: true, type: ['line', 'bar'] },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
+                }
+            }
         };
-        
+
         option.title.text = title;
         header[0].forEach((name, index) => {
             option.xAxis.data.push(name);
         });
-        option.series.push({data, type:'bar'});   
+        option.series.push({ data, type: 'bar' });
         // option.series[0].name = header[0];
         return option;
     }
@@ -56,23 +70,23 @@ class GenericBarChart extends React.Component{
         data[1].forEach((count, index) => {
             if (colors.length > 0 && colors.length >= data[1].length) {
                 series.push({
-                    value:count,
-                    itemStyle: { color: colors[index]}
+                    value: count,
+                    itemStyle: { color: colors[index] }
                 });
             }
-                       
+
         });
-        
-        return series;        
+
+        return series;
     }
 
 
-    render(){
+    render() {
         console.log(this.state.option);
         return (
-            <ReactEcharts 
+            <ReactEcharts
                 option={this.state.option}
-                style={{height: '500px', width: '100%'}}
+                style={{ height: '500px', width: '100%' }}
             />
 
 
