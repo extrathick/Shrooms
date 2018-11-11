@@ -97,6 +97,7 @@ class ClassOdorSVG extends React.Component {
         }
 
         const option = {
+            color: ['#FFFFFF','#3ed187'],
             title: {
                 text: 'Edible Versus Odor',
                 textStyle: {color: "white"},
@@ -133,7 +134,7 @@ class ClassOdorSVG extends React.Component {
               }
             ]        
         };
-        
+        console.log(option);
         return (
             <div style={{width: '100%'}}>
                 <ReactEcharts 
