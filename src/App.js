@@ -17,6 +17,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <GenericBarChart title='Population Shrooms' category='population' colors={['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83']} />
+          <GenericBarChart title='Odor' category='odor' colors={['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83', '#d48265', '#91c7ae','#749f83']} />
           <TestComponent />
           <SunburstController />
           <OdorSVG />
