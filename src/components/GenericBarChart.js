@@ -21,6 +21,25 @@ class GenericBarChart extends React.Component{
 
     getOption(title, data, category){
         let header = this.look.getData(category);
+        let  option = {
+            title: {
+                text: 'placeholder',
+                textStyle: { color: "white" },
+                x: 'center',
+                y: 'top'
+            },
+            xAxis: {
+                type: 'category',
+                data: [],
+                axisLabel: {
+                    textStyle: { color: "white" }
+                }
+            },
+            yAxis: {
+                type: 'value'
+            },
+        series: []
+        };
         
         option.title.text = title;
         header[0].forEach((name, index) => {
@@ -63,43 +82,3 @@ class GenericBarChart extends React.Component{
 }
 
 export default GenericBarChart;
-
-
-let  option = {
-    title: {
-        text: 'placeholder',
-        textStyle: { color: "white" },
-        x: 'center',
-        y: 'top'
-    },
-    xAxis: {
-        type: 'category',
-        data: [],
-        axisLabel: {
-            textStyle: { color: "white" }
-        }
-    },
-    yAxis: {
-        type: 'value'
-    },
-series: 
-[
-    // {
-    //     data: [
-    //         {
-    //             value: 120,
-    //             itemStyle: {color: 'blue'},
-    //         },
-    //         {
-    //             value: 200,
-    //             itemStyle: {color: 'red'},
-    //         },
-    //         {
-    //             value: 150,
-    //             itemStyle: {color: 'green'},
-    //         }
-    //     ],
-    //     type: 'bar'
-    // }
-]      
-};

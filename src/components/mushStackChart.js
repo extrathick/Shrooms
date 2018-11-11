@@ -8,7 +8,13 @@ class TryingHard extends React.Component {
         const look = new lookup();
         
         const option = {
-        color: ['324E38','274E2F','1B5C28','157328', '10952B', '0FB932'],
+        color: ['#FFFFFF','#3ed187'],
+        title: {
+            text: 'Habitats',
+            textStyle: {color: "white"},
+            x: 'center',
+            y: 'top'
+          },
         tooltip: {
             trigger: 'axis',
             axisPointer: {
@@ -16,7 +22,10 @@ class TryingHard extends React.Component {
             }
         },
         legend: {
-            data: ['Poisonous', 'Edible']
+            data: ['Poisonous', 'Edible'],
+            textStyle: {color: "white"},
+            x: 'center',
+            y: 'bottom'            
         },
         toolbox: {
             show: true,
@@ -36,8 +45,11 @@ class TryingHard extends React.Component {
             {
                 type: 'category',
                 axisTick: {show: false},
-                data: ['Grasses', 'Leaves', 'Meadows', 'Paths', 'Urban', 'Waste', 'Woods']
-            }
+                data: ['Grasses', 'Leaves', 'Meadows', 'Paths', 'Urban', 'Waste', 'Woods'],
+                axisLabel: {
+                    textStyle: {color: "white"}
+                }
+            },
         ], 
         yAxis: [
             {
