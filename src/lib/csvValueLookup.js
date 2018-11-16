@@ -42,6 +42,47 @@ class lookup{
         }
     }
 
+    //takes a category and returns the number of times a subcategory appears in the mushroom dataset as an array
+    getCount(category) {
+        let count = [];
+        let types = this.getAllPossible(category);
+        let slot = this.getCategoryNumber(category);
+
+        types.forEach(() => {
+            count.push(0);
+        });
+
+        mushroom.data.forEach((mushroom) => {
+            types.forEach((type, index) => {
+                if (mushroom[slot] === type.key) {
+                    count[index]++;
+                }
+            });
+        });
+
+        return count;        
+    }
+
+    //takes a category and returns the subcategory and its count in the mushroom dataset as an array. 
+    //array[0] = headers array[1] = count
+    getData(category){
+        let data = [];
+        let subcategories = [];
+        let count = this.getCount(category);
+        let types = this.getAllPossible(category);
+       
+        types.forEach((type) => {
+            subcategories.push(type.value);
+        });
+
+        data.push(subcategories);
+        data.push(count);
+
+        return data;
+    }
+
+
+
     // Returns all categories
     getCategories(){
         return mushroom.header

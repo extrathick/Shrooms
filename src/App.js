@@ -3,9 +3,12 @@
 import React, { Component } from 'react';
 import logo from './pics/logo.svg'; //Import components/Images from folders like this
 import './App.css';
-import TestComponent from './components/test'
-import SunburstController from './components/SunburstController'
-import GenericEchartsHeatmap from './components/GenericEchartsHeatmap'
+import TestComponent from './components/test';
+import SunburstController from './components/SunburstController';
+import OdorSVG from './components/OdorSVG';
+import ClassOdorSVG from './components/ClassOdorSVG';
+import GenericBarChart from './components/GenericBarChart';
+import TryingHard from './components/mushStackChart';
 
 class App extends Component {
   render() {
@@ -13,20 +16,13 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <GenericBarChart title='Population Shrooms' category='population' colors={['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83']} />
+          <GenericBarChart title='Odor' category='odor' colors={['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83', '#d48265', '#91c7ae','#749f83']} />
           <TestComponent />
           <SunburstController />
-          <GenericEchartsHeatmap />
+          <OdorSVG />
+          <ClassOdorSVG />
+          <TryingHard />
         </header>
       </div>
     );
