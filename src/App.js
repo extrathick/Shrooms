@@ -23,7 +23,7 @@ class App extends Component {
           <SunburstController />
           <OdorSVG />
           <ClassOdorSVG />
-          <TryingHard />
+          <TryingHard  title='placeholder' categorydesu='population' colorshit={['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83', '#d48265', '#91c7ae','#749f83']} />
           <GenericClusteredBarChart title='Population Shrooms' category='population' category2='population' colors={['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83']} colors2={["#749f83", "#91c7ae", "#d48265", "#61a0a8", "#2f4554", "#c23531"]}/>
         </header>
       </div>
