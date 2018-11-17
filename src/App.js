@@ -8,6 +8,7 @@ import SunburstController from './components/SunburstController';
 import OdorSVG from './components/OdorSVG';
 import ClassOdorSVG from './components/ClassOdorSVG';
 import GenericBarChart from './components/GenericBarChart';
+import GenericClusteredBarChart from './components/GenericClusteredBarChart';
 import TryingHard from './components/mushStackChart';
 
 class App extends Component {

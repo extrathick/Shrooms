@@ -1,7 +1,7 @@
 import React from 'react';
 import lookup from '../lib/csvValueLookup';
 import ReactEcharts from 'echarts-for-react';
-import json from '../data/mushrooms.json';
+//import json from '../data/mushrooms.json';
 
 class TryingHard extends React.Component {
     render() {
@@ -34,10 +34,10 @@ class TryingHard extends React.Component {
             top: 'center',
             feature: {
                 mark: {show: true},
-                dataView: {show: true, readOnly: false},
+                dataView: {show: false, readOnly: false},
                 magicType: {show: true, type: ['line', 'bar', 'stack', 'tilted']},
                 restore: {show: true},
-                saveAsImage: {show: true}
+                saveAsImage: {show: true} //dont use white for colors it generates it on a white background
         }
         }, //end of toolbox
         calculable: true,

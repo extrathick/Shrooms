@@ -111,6 +111,19 @@ class ClassOdorSVG extends React.Component {
                 x: 'center',
                 y: 'bottom'
               },
+                toolbox: {
+                    show: true,
+                    orient: 'vertical',
+                    left: 'right',
+                    top: 'center',
+                    feature: {
+                        mark: {show: true},
+                        dataView: {show: false, readOnly: false},
+                        magicType: {show: true, type: ['line', 'bar', 'stack', 'tilted']},
+                        restore: {show: true},
+                        saveAsImage: {show: true}
+                    }
+                },
               xAxis: {
                 data: look.getAllPossible('odor'),
                 axisLabel: {
@@ -124,12 +137,14 @@ class ClassOdorSVG extends React.Component {
               },
               series: [{
                 name: 'Edible',
-                type: 'bar',              
+                type: 'bar',  
+                barGap: 0,           
                 data: [ae, le, ce, ye, fe, me, ne, pe, se]             
               },
                 {
                 name: 'Poisonous',
-                type: 'bar',              
+                type: 'bar',
+                barGap: 0,              
                 data: [ap, lp, cp, yp, fp, mp, np, pp, sp]             
               }
             ]        
