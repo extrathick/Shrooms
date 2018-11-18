@@ -82,7 +82,7 @@ class GenericBarChart extends React.Component {
 
 
     render() {
-        console.log(this.state.option);
+        // console.log(this.state.option);
         return (
             <ReactEcharts
                 option={this.state.option}

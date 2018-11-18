@@ -1,7 +1,7 @@
 import React from 'react';
 import lookup from '../lib/csvValueLookup';
 import ReactEcharts from 'echarts-for-react';
-import json from '../data/mushrooms.json';
+// import json from '../data/mushrooms.json';
 
 class TryingHard extends React.Component {
     
@@ -90,7 +90,7 @@ class TryingHard extends React.Component {
     }//end of compileData
 
 render() {
-    console.log(this.state.option);
+    // console.log(this.state.option);
     return (
         <div style={{ width: '100%'}}>
             <ReactEcharts

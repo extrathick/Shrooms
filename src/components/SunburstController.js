@@ -49,7 +49,9 @@ const Dropdown = (props) => {
     let items = props.items.map(item => {
         if(props.selected){
             if(props.selected === item){
-                return <option key={item} value={item} selected={"selected"}>{item}</option>
+                // just changed this to remove the error in the console
+                // return <option key={item} value={item} selected={"selected"}>{item}</option>
+                return <option key={item} value={item} >{item}</option>
             }
         }
         return <option key={item} value={item}>{item}</option>

@@ -149,7 +149,7 @@ class ClassOdorSVG extends React.Component {
               }
             ]        
         };
-        console.log(option);
+        // console.log(option);
         return (
             <div style={{width: '100%'}}>
                 <ReactEcharts 

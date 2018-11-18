@@ -24,7 +24,8 @@ class App extends Component {
           <OdorSVG />
           <ClassOdorSVG />
           <TryingHard  title='placeholder' categorydesu='population' colorshit={['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83', '#d48265', '#91c7ae','#749f83']} />
-          <GenericClusteredBarChart title='Population Shrooms' category='population' category2='population' colors={['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83']} colors2={["#749f83", "#91c7ae", "#d48265", "#61a0a8", "#2f4554", "#c23531"]}/>
+          <GenericClusteredBarChart title='test chart' category='odor' category2='class' colors={['#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83', '#d48265', '#91c7ae']}/>
+          <GenericClusteredBarChart title='test chart2' category='odor' category2='population' colors={['#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83', '#d48265', '#91c7ae']}/>
         </header>
       </div>
     );

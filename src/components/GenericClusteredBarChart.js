@@ -2,38 +2,44 @@ import React from 'react';
 import lookup from '../lib/csvValueLookup';
 import ReactEcharts from 'echarts-for-react';
 
-
 class GenericClusteredBarChart extends React.Component {
 
     constructor(props) {
+
         super(props);
         this.category = this.props.category;
         this.category2 = this.props.category2;
         this.title = this.props.title;
         this.colors = this.props.colors;
-        this.colors2 = this.props.colors2;
         this.look = new lookup();
         this.state = {
             option: null,
-            data: null,
-            data2: null
+            data: null
         }
-        this.state.data = this.compileData(this.category, this.colors);
-        this.state.data2 = this.compileData(this.category2, this.colors2);
-        this.state.option = this.getOption(this.title, this.state.data, this.state.data2, this.category);
+        this.state.data = this.look.getCountComparingTwoCategories(this.category, this.category2);
+        this.state.option = this.getOption(this.title, this.state.data, this.category, this.category2, this.colors);
     }
 
-    getOption(title, data, data2, category) {
-        console.log("yeet");
-        console.log(data2);
+    getOption(title, data, category, category2, colors) {
+
         let header = this.look.getData(category);
+        let names = this.look.getData(category2);
+        let alldata = data;
+
         let option = {
+            color: colors, 
             title: {
                 text: 'placeholder',
                 textStyle: { color: "white" },
                 x: 'center',
                 y: 'top'
             },
+            legend: {
+                data:[],
+                textStyle: {color: "white"},
+                x: 'center',
+                y: 'bottom'
+              },            
             xAxis: {
                 type: 'category',
                 data: [],
@@ -45,7 +51,12 @@ class GenericClusteredBarChart extends React.Component {
                 type: 'value'
             },
             series: [],
-            tooltip: {},
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
             toolbox: {
                 show: true,
                 orient: 'vertical',
@@ -61,34 +72,25 @@ class GenericClusteredBarChart extends React.Component {
             }
         };
 
+        for (var i = 1, len = alldata.length; i < len; i++){
+            data = alldata[i];
+            option.series.push({ data, type: 'bar', barGap: 0, name: 'placeholder name'});
+        }
+
         option.title.text = title;
-        header[0].forEach((name, index) => {
+        header[0].forEach((name) => {
             option.xAxis.data.push(name);
         });
-        option.series.push({ data, type: 'bar', barGap: 0 });
-        // don't ask it just works @justin
-        data = data2;
-        option.series.push({ data, type: 'bar'});
+        names[0].forEach((name, index) => {
+            option.legend.data.push(name);
+            option.series[index].name = name;
+        });        
+
         return option;
     }
 
-    compileData(category, colors) {
-        let data = this.look.getData(category);
-        let series = [];
-        data[1].forEach((count, index) => {
-            if (colors.length > 0 && colors.length >= data[1].length) {
-                series.push({
-                    value: count,
-                    itemStyle: { color: colors[index] }
-                });
-            }
-
-        });
-        return series;
-    }
-
-
     render() {
+
         return (
             <ReactEcharts
                 option={this.state.option}
@@ -96,6 +98,7 @@ class GenericClusteredBarChart extends React.Component {
             />
         )
     }
+
 }
 
 export default GenericClusteredBarChart;
