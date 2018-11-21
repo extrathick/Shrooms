@@ -1,5 +1,6 @@
 import React from 'react';
 import lookup from '../lib/csvValueLookup';
+import customColors from '../lib/colors';
 import ReactEcharts from 'echarts-for-react';
 
 class GenericClusteredBarChart extends React.Component {
@@ -12,10 +13,14 @@ class GenericClusteredBarChart extends React.Component {
         this.title = this.props.title;
         this.colors = this.props.colors;
         this.look = new lookup();
+        this.custom = new customColors();        
         this.state = {
             option: null,
             data: null
         }
+        if (this.colors === 'default'){
+            this.colors = this.custom.getColors(this.category2);
+        }      
         this.state.data = this.look.getCountComparingTwoCategories(this.category, this.category2);
         this.state.option = this.getOption(this.title, this.state.data, this.category, this.category2, this.colors);
     }

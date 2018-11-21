@@ -1,5 +1,6 @@
 import React from 'react';
 import lookup from '../lib/csvValueLookup';
+import customColors from '../lib/colors';
 import ReactEcharts from 'echarts-for-react';
 
 
@@ -11,9 +12,13 @@ class GenericBarChart extends React.Component {
         this.title = this.props.title;
         this.colors = this.props.colors;
         this.look = new lookup();
+        this.custom = new customColors();
         this.state = {
             option: null,
             data: null,
+        }
+        if (this.colors === 'default'){
+            this.colors = this.custom.getColors(this.category);
         }
         this.state.data = this.compileData(this.category, this.colors);
         this.state.option = this.getOption(this.title, this.state.data, this.category);
@@ -24,7 +29,7 @@ class GenericBarChart extends React.Component {
         let option = {
             title: {
                 text: 'placeholder',
-                textStyle: { color: "white" },
+                textStyle: { color: 'white' },
                 x: 'center',
                 y: 'top'
             },
@@ -32,11 +37,14 @@ class GenericBarChart extends React.Component {
                 type: 'category',
                 data: [],
                 axisLabel: {
-                    textStyle: { color: "white" }
+                    textStyle: { color: 'white' }
                 }
             },
             yAxis: {
-                type: 'value'
+                type: 'value',
+                axisLabel: {
+                    textStyle: { color: 'white' }
+                }
             },
             series: [],
             tooltip: {},
