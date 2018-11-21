@@ -126,6 +126,30 @@ class lookup{
     getCategories(){
         return mushroom.header
     }
+
+    // Returns generic title
+    getTitle(category){
+
+        let title = '';
+
+        if (category === 'class'){
+            category = 'edibility';
+        }
+
+        title = category.replace(/-/g, ' ').toLowerCase().split(' ');
+
+        for (var i = 0; i < title.length; i++) {
+            title[i] = title[i].charAt(0).toUpperCase() + title[i].substring(1);     
+        }
+
+        return title.join(' '); 
+    }
+
+    getClusteredTitle(category, category2){
+        let title = this.getTitle(category) + ' vs ' + this.getTitle(category2);
+
+        return title;
+    }
 }
 
 export default lookup;

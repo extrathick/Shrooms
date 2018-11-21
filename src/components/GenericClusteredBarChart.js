@@ -18,6 +18,9 @@ class GenericClusteredBarChart extends React.Component {
             option: null,
             data: null
         }
+        if (this.title === 'default'){
+            this.title = this.look.getClusteredTitle(this.category, this.category2);
+        }
         if (this.colors === 'default'){
             this.colors = this.custom.getColors(this.category2);
         }      

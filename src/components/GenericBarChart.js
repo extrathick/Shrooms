@@ -17,6 +17,9 @@ class GenericBarChart extends React.Component {
             option: null,
             data: null,
         }
+        if (this.title === 'default'){
+            this.title = this.look.getTitle(this.category);
+        }
         if (this.colors === 'default'){
             this.colors = this.custom.getColors(this.category);
         }
@@ -47,7 +50,12 @@ class GenericBarChart extends React.Component {
                 }
             },
             series: [],
-            tooltip: {},
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
             toolbox: {
                 show: true,
                 orient: 'vertical',
