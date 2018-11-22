@@ -3,12 +3,10 @@
 import React, { Component } from 'react';
 import logo from './pics/logo.svg'; //Import components/Images from folders like this
 import './App.css';
-import TestComponent from './components/test';
 import SunburstController from './components/SunburstController';
-import OdorSVG from './components/OdorSVG';
-import ClassOdorSVG from './components/ClassOdorSVG';
 import GenericBarChart from './components/GenericBarChart';
-import TryingHard from './components/mushStackChart';
+import GenericClusteredBarChart from './components/GenericClusteredBarChart';
+import ChartSummary from './components/ChartSummary';
 
 class App extends Component {
   render() {
@@ -16,13 +14,20 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <GenericBarChart title='Population Shrooms' category='population' colors={['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83']} />
-          <GenericBarChart title='Odor' category='odor' colors={['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83', '#d48265', '#91c7ae','#749f83']} />
-          <TestComponent />
           <SunburstController />
-          <OdorSVG />
-          <ClassOdorSVG />
-          <TryingHard />
+          <GenericBarChart title='default' category='class' colors='default' />
+          <ChartSummary category='class' category2='none' text='default' />
+          <GenericBarChart title='default' category='cap-color' colors='default' />
+          <ChartSummary category='cap-color' category2='none' text='default' />
+          <GenericBarChart title='default' category='gill-color' colors='default' />
+          <GenericBarChart title='default' category='stalk-color-above-ring' colors='default' />
+          <GenericBarChart title='default' category='stalk-color-below-ring' colors='default' />
+          <GenericBarChart title='default' category='veil-color' colors='default' />
+          <GenericBarChart title='default' category='spore-print-color' colors='default' />
+          <GenericBarChart title='default' category='population' colors='default' />
+          <GenericClusteredBarChart title='default' category='odor' category2='class' colors='default' />
+          <GenericClusteredBarChart title='default' category='odor' category2='population' colors='default' />
+          <ChartSummary category='odor' category2='population' text='default' />
         </header>
       </div>
     );

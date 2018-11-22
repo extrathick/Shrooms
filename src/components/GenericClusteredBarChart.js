@@ -3,43 +3,55 @@ import lookup from '../lib/csvValueLookup';
 import customColors from '../lib/colors';
 import ReactEcharts from 'echarts-for-react';
 
-class GenericBarChart extends React.Component {
+class GenericClusteredBarChart extends React.Component {
 
     constructor(props) {
         super(props);
         this.category = this.props.category;
+        this.category2 = this.props.category2;
         this.title = this.props.title;
         this.colors = this.props.colors;
         this.look = new lookup();
-        this.custom = new customColors();
+        this.custom = new customColors();        
         this.state = {
             option: null,
-            data: null,
+            data: null
         }
         if (this.title === 'default'){
-            this.title = this.look.getTitle(this.category);
+            this.title = this.look.getClusteredTitle(this.category, this.category2);
         }
         if (this.colors === 'default'){
-            this.colors = this.custom.getColors(this.category);
-        }
-        this.state.data = this.compileData(this.category, this.colors);
-        this.state.option = this.getOption(this.title, this.state.data, this.category);
+            this.colors = this.custom.getColors(this.category2);
+        }      
+        this.state.data = this.look.getCountComparingTwoCategories(this.category, this.category2);
+        this.state.option = this.getOption(this.title, this.state.data, this.category, this.category2, this.colors);
     }
 
-    getOption(title, data, category) {
+    getOption(title, data, category, category2, colors) {
+
         let header = this.look.getData(category);
+        let names = this.look.getData(category2);
+        let alldata = data;
+
         let option = {
+            color: colors, 
             title: {
                 text: 'placeholder',
-                textStyle: { color: 'white' },
+                textStyle: { color: "white" },
                 x: 'center',
                 y: 'top'
             },
+            legend: {
+                data:[],
+                textStyle: {color: "white"},
+                x: 'center',
+                y: 'bottom'
+              },            
             xAxis: {
                 type: 'category',
                 data: [],
                 axisLabel: {
-                    textStyle: { color: 'white' }
+                    textStyle: { color: "white" }
                 }
             },
             yAxis: {
@@ -70,33 +82,25 @@ class GenericBarChart extends React.Component {
             }
         };
 
+        for (var i = 1, len = alldata.length; i < len; i++){
+            data = alldata[i];
+            option.series.push({ data, type: 'bar', barGap: 0, name: 'placeholder name'});
+        }
+
         option.title.text = title;
-        header[0].forEach((name, index) => {
+        header[0].forEach((name) => {
             option.xAxis.data.push(name);
         });
-        option.series.push({ data, type: 'bar' });
-        // option.series[0].name = header[0];
+        names[0].forEach((name, index) => {
+            option.legend.data.push(name);
+            option.series[index].name = name;
+        });        
+
         return option;
     }
 
-    compileData(category, colors) {
-        let data = this.look.getData(category);
-        let series = [];
-        data[1].forEach((count, index) => {
-            if (colors.length > 0 && colors.length >= data[1].length) {
-                series.push({
-                    value: count,
-                    itemStyle: { color: colors[index] }
-                });
-            }
-
-        });
-
-        return series;
-    }
-
     render() {
-        // console.log(this.state.option);
+
         return (
             <ReactEcharts
                 option={this.state.option}
@@ -104,6 +108,7 @@ class GenericBarChart extends React.Component {
             />
         )
     }
+
 }
 
-export default GenericBarChart;
+export default GenericClusteredBarChart;

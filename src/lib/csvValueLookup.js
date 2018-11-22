@@ -81,11 +81,74 @@ class lookup{
         return data;
     }
 
+    //returns number of times each element in category2 appears for each element in category
+    //array[0] = headers rest = count
+    getCountComparingTwoCategories(category, category2){
+        let count = [];
+        let counts = []; 
+        let subcategories = [];
+        let types = this.getAllPossible(category);
+        let types2 = this.getAllPossible(category2);
+        let slot = this.getCategoryNumber(category);
+        let slot2 = this.getCategoryNumber(category2);;
 
+        types.forEach(() => {
+            count.push(0);
+        });
+        
+        types.forEach((type) => {
+            subcategories.push(type.value);
+        });
+
+        counts.push(subcategories);
+
+        types2.forEach((subcategory) => {
+            mushroom.data.forEach((mushroom) => {
+                if (mushroom[slot2] === subcategory.key) {
+                    types.forEach((type, index) => {
+                        if (mushroom[slot] === type.key) {
+                            count[index]++;
+                        }
+                    });
+                }
+            });
+            counts.push(count);
+            count = [];
+            types.forEach(() => {
+                count.push(0);
+            });    
+        });
+
+        return counts;    
+    }
 
     // Returns all categories
     getCategories(){
         return mushroom.header
+    }
+
+    // Returns generic title
+    getTitle(category){
+
+        let title = '';
+
+        if (category === 'class'){
+            category = 'edibility';
+        }
+
+        title = category.replace(/-/g, ' ').toLowerCase().split(' ');
+
+        for (var i = 0; i < title.length; i++) {
+            title[i] = title[i].charAt(0).toUpperCase() + title[i].substring(1);     
+        }
+
+        return title.join(' '); 
+    }
+
+    getClusteredTitle(category, category2){
+        let title = this.getTitle(category) + ' vs ' + this.getTitle(category2);
+
+        return title;
     }
 }
 
