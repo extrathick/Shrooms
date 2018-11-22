@@ -6,7 +6,6 @@ import ReactEcharts from 'echarts-for-react';
 class GenericClusteredBarChart extends React.Component {
 
     constructor(props) {
-
         super(props);
         this.category = this.props.category;
         this.category2 = this.props.category2;
@@ -56,7 +55,10 @@ class GenericClusteredBarChart extends React.Component {
                 }
             },
             yAxis: {
-                type: 'value'
+                type: 'value',
+                axisLabel: {
+                    textStyle: { color: 'white' }
+                }
             },
             series: [],
             tooltip: {

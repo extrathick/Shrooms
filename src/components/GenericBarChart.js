@@ -3,7 +3,6 @@ import lookup from '../lib/csvValueLookup';
 import customColors from '../lib/colors';
 import ReactEcharts from 'echarts-for-react';
 
-
 class GenericBarChart extends React.Component {
 
     constructor(props) {
@@ -96,7 +95,6 @@ class GenericBarChart extends React.Component {
         return series;
     }
 
-
     render() {
         // console.log(this.state.option);
         return (
@@ -104,9 +102,6 @@ class GenericBarChart extends React.Component {
                 option={this.state.option}
                 style={{ height: '500px', width: '100%' }}
             />
-
-
-
         )
     }
 }
