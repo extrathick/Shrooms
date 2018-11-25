@@ -18,18 +18,22 @@ class GenericBarChart extends React.Component {
             title: this.props.title,
             option: null
         }
-        this.getTitle();
-        this.getColors();
+        // this.getTitle();
+        // this.getColors();
+        this.getDefault();
         this.state.data = this.compileData(this.state.category, this.state.colors);
         this.state.option = this.getOption(this.state.title, this.state.data, this.state.category);
 
     }
 
-    getTitle() {       
-        console.log(this.state.title);
-        console.log(this.state.category);
-        
-        
+    getDefault() {
+        this.setState({
+            title: this.look.getTitle(this.state.category),
+            colors: this.custom.getColors(this.state.categroy)
+        });
+    }
+
+    getTitle() {             
         if (this.state.title === 'default') {
             this.setState({
                 title: this.look.getTitle(this.state.category)
@@ -118,11 +122,12 @@ class GenericBarChart extends React.Component {
             this.setState({
                 category: this.props.category
             });
-            this.getTitle();
-            this.getColors();
+            this.getDefault();
+            this.compileData(this.state.category, this.state.colors); 
             this.setState({
                 option: this.getOption(this.state.title, this.state.data, this.state.category)
-            });            
+            }); 
+          
         }
     }
 
