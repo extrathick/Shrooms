@@ -7,23 +7,41 @@ class GenericBarChart extends React.Component {
 
     constructor(props) {
         super(props);
-        this.category = this.props.category;
-        this.title = this.props.title;
-        this.colors = this.props.colors;
+        // this.title = this.props.title;
+        // this.colors = this.props.colors;
         this.look = new lookup();
         this.custom = new customColors();
         this.state = {
-            option: null,
+            category: this.props.category,
+            colors: this.props.colors,
             data: null,
+            title: this.props.title,
+            option: null
         }
-        if (this.title === 'default'){
-            this.title = this.look.getTitle(this.category);
+        this.getTitle();
+        this.getColors();
+        this.state.data = this.compileData(this.state.category, this.state.colors);
+        this.state.option = this.getOption(this.state.title, this.state.data, this.state.category);
+
+    }
+
+    getTitle() {       
+        console.log(this.state.title);
+        console.log(this.state.category);
+        
+        
+        if (this.state.title === 'default') {
+            this.setState({
+                title: this.look.getTitle(this.state.category)
+            });
         }
-        if (this.colors === 'default'){
-            this.colors = this.custom.getColors(this.category);
+    }
+    getColors() {
+        if (this.state.colors === 'default') {
+            this.setState({
+                colors: this.custom.getColors(this.state.category)
+            });
         }
-        this.state.data = this.compileData(this.category, this.colors);
-        this.state.option = this.getOption(this.title, this.state.data, this.category);
     }
 
     getOption(title, data, category) {
@@ -95,8 +113,20 @@ class GenericBarChart extends React.Component {
         return series;
     }
 
+    componentDidUpdate(prevProps){
+        if(this.props.category !== prevProps.category){
+            this.setState({
+                category: this.props.category
+            });
+            this.getTitle();
+            this.getColors();
+            this.setState({
+                option: this.getOption(this.state.title, this.state.data, this.state.category)
+            });            
+        }
+    }
+
     render() {
-        // console.log(this.category);
         return (
             <ReactEcharts
                 option={this.state.option}

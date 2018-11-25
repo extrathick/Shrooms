@@ -34,6 +34,8 @@ export default class SunburstController extends Component {
     }
 
     render() {
+        console.log(this.state.inner);
+        
         return (
         <div style={{width: '100%'}}>
         <Dropdown items={this.headers} onChange={(event) => this.setInner(event.target.value)} selected={this.state.inner}/>
