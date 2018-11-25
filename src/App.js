@@ -7,12 +7,14 @@ import SunburstController from './components/SunburstController';
 import GenericBarChart from './components/GenericBarChart';
 import GenericClusteredBarChart from './components/GenericClusteredBarChart';
 import ChartSummary from './components/ChartSummary';
+import Calculator from './components/Calculator';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
+          <Calculator />
           <img src={logo} className="App-logo" alt="logo" />
           <SunburstController />
           <GenericBarChart title='default' category='class' colors='default' />
