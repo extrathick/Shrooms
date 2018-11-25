@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import GenericEchartsSunburst from '../components/GenericEchartsSunburst';
+import GenericBarChart from '../components/GenericBarChart';
+import GenericClusteredBarChart from '../components/GenericClusteredBarChart';
 import lookup from '../lib/csvValueLookup';
 
 export default class SunburstController extends Component {
@@ -36,11 +38,14 @@ export default class SunburstController extends Component {
         <div style={{width: '100%'}}>
         <Dropdown items={this.headers} onChange={(event) => this.setInner(event.target.value)} selected={this.state.inner}/>
         <Dropdown items={this.headers} onChange={(event) => this.setOuter(event.target.value)} selected={this.state.outer}/>
+        <GenericBarChart title='default' category={this.state.inner} colors='default' />
             <GenericEchartsSunburst 
                 inner={this.state.inner}
                 outer={this.state.outer}
                 style={{height: '500px', width: '100%'}}
             />
+        <GenericBarChart title='default' category={this.state.outer} colors='default' />
+        <GenericClusteredBarChart title='default' category={this.state.inner} category2={this.state.outer} colors='default' />
         </div>
         )
     }
