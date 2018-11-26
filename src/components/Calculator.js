@@ -7,7 +7,13 @@ export default class Calculator extends Component {
         super(props);
         this.look = new lookup();
         this.list = this.look.getCategories();
+        this.calcVal = [];
     }
+
+    returnMethod(keyVal){
+        this.calcVal.push(keyVal);
+    }
+
     render() {
         let listItems = this.list.map((listItem) =>
             <CalcSubclass key={listItem} category={listItem} />
