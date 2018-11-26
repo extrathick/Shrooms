@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "ajv": "^6.0.0",
     "echarts": "^4.0.0",
     "echarts-for-react": "^2.0.15-beta.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-scripts": "2.0.5",
-    "victory": "^30.5.1",
-    "ajv": "^6.0.0"
+    "styled-components": "^4.1.1",
+    "victory": "^30.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
