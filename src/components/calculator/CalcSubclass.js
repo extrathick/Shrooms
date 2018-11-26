@@ -6,18 +6,9 @@ const Title = styled.p `
     color: white;
 `;
 
-const List = styled.div`
+const List = styled.div `
     display: flex;
     justify-content: space-evenly;
-`;
-
-const Item = styled.button`
-    background-color:#d8d8d8;
-    border:white;
-    color:black;
-    border-radius:1vw;
-    height: 2vw;
-    width: 4vw;
 `;
 
 export default class CalcSubclass extends Component {
@@ -44,7 +35,7 @@ export default class CalcSubclass extends Component {
                 <Title>{this.state.category}</Title>
                 <List>
                     {this.state.items.map((item) => {
-                        return <Item key={item} value={item} onClick={this.call}>{item}</Item>
+                        return <ItemButton key={item} value={item} click={this.call}>{item}</ItemButton>
                     })}
                 </List>
             </div>
@@ -53,12 +44,33 @@ export default class CalcSubclass extends Component {
 }
 
 
+const Button = styled.button `
+    background-color:#d8d8d8;
+    border:white;
+    color:black;
+    border-radius:1vw;
+    height: 3vw;
+    width: 5vw;
+`;
+
+
+// i need this for state
 class ItemButton extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+         disabled: false
+      };
+    }
+    
+    clicc = (event) =>{
+        this.props.click(event);
+        this.setState({disabled: !this.state.disabled});
+    }
+
   render() {
     return (
-      <div>
-        
-      </div>
+        <Button onClick={this.clicc} value={this.props.value}>{this.props.children}</Button>
     )
   }
 }
