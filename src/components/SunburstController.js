@@ -38,9 +38,9 @@ export default class SunburstController extends Component {
         
         return (
         <div style={{width: '100%'}}>
+        <GenericBarChart title='default' category={this.state.inner} colors='default' />
         <Dropdown items={this.headers} onChange={(event) => this.setInner(event.target.value)} selected={this.state.inner}/>
         <Dropdown items={this.headers} onChange={(event) => this.setOuter(event.target.value)} selected={this.state.outer}/>
-        <GenericBarChart title='default' category={this.state.inner} colors='default' />
             <GenericEchartsSunburst 
                 inner={this.state.inner}
                 outer={this.state.outer}

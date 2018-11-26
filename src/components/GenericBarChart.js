@@ -123,8 +123,8 @@ class GenericBarChart extends React.Component {
                 category: this.props.category
             });
             this.getDefault();
-            this.compileData(this.state.category, this.state.colors); 
             this.setState({
+                data: this.compileData(this.state.category, this.state.colors),
                 option: this.getOption(this.state.title, this.state.data, this.state.category)
             }); 
           
