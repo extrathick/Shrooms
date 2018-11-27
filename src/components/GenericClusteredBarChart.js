@@ -7,24 +7,19 @@ class GenericClusteredBarChart extends React.Component {
 
     constructor(props) {
         super(props);
-        this.category = this.props.category;
-        this.category2 = this.props.category2;
-        this.title = this.props.title;
-        this.colors = this.props.colors;
         this.look = new lookup();
         this.custom = new customColors();        
         this.state = {
-            option: null,
-            data: null
+            option: this.getOption(this.getTitle(), this.look.getCountComparingTwoCategories(this.props.category, this.props.category2), this.props.category, this.props.category2, this.getColors())
         }
-        if (this.title === 'default'){
-            this.title = this.look.getClusteredTitle(this.category, this.category2);
-        }
-        if (this.colors === 'default'){
-            this.colors = this.custom.getColors(this.category2);
-        }      
-        this.state.data = this.look.getCountComparingTwoCategories(this.category, this.category2);
-        this.state.option = this.getOption(this.title, this.state.data, this.category, this.category2, this.colors);
+    }
+
+    getTitle() {
+        return (this.props.title === 'default') ? this.look.getTitle(this.props.category) : this.props.title;
+    }
+
+    getColors() {
+        return (this.props.colors === 'default') ? this.custom.getColors(this.props.category) : this.props.colors;
     }
 
     getOption(title, data, category, category2, colors) {
@@ -97,6 +92,14 @@ class GenericClusteredBarChart extends React.Component {
         });        
 
         return option;
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props !== prevProps) {
+            this.setState({
+                option: this.getOption(this.getTitle(), this.look.getCountComparingTwoCategories(this.props.category, this.props.category2), this.props.category, this.props.category2, this.getColors())
+            });
+        }
     }
 
     render() {
