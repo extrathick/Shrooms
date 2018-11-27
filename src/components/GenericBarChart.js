@@ -11,20 +11,39 @@ class GenericBarChart extends React.Component {
         this.look = new lookup();
         this.custom = new customColors();
         this.state = {
-                    //option: title, data, category
-            option: this.getOption(this.look.getTitle(this.props.category), this.compileData(this.props.category, this.custom.getColors(this.props.category)), this.props.category)
+            //option: title, data, category
+            option: this.getOption(this.getTitle(), this.compileData(this.props.category, this.getColors()), this.props.category)
         }
 
 
     }
 
-    getDefault() {
-        this.setState({
-            title: this.look.getTitle(this.state.category),
-            colors: this.custom.getColors(this.state.categroy)
-        });
+    getTitle() {
+        return (this.props.title === 'default') ? this.look.getTitle(this.props.category) : this.props.title;
     }
 
+    getColors() {
+        return (this.props.colors === 'default') ? this.custom.getColors(this.props.category) : this.props.colors;
+    }
+
+    // Associates the data from the category to the colors given
+    compileData(category, colors) {
+        let data = this.look.getData(category);
+        let series = [];
+        data[1].forEach((count, index) => {
+            if (colors.length > 0 && colors.length >= data[1].length) {
+                series.push({
+                    value: count,
+                    itemStyle: { color: colors[index] }
+                });
+            }
+
+        });
+
+        return series;
+    }
+
+    //The main state that determines the settings for the bar chart
     getOption(title, data, category) {
         let header = this.look.getData(category);
         let option = {
@@ -78,26 +97,10 @@ class GenericBarChart extends React.Component {
         return option;
     }
 
-    compileData(category, colors) {
-        let data = this.look.getData(category);
-        let series = [];
-        data[1].forEach((count, index) => {
-            if (colors.length > 0 && colors.length >= data[1].length) {
-                series.push({
-                    value: count,
-                    itemStyle: { color: colors[index] }
-                });
-            }
-
-        });
-
-        return series;
-    }
-
-    componentDidUpdate(prevProps){              
-        if(this.props.category !== prevProps.category){
+    componentDidUpdate(prevProps) {
+        if (this.props.category !== prevProps.category) {
             this.setState({
-                option: this.getOption(this.look.getTitle(this.props.category), this.compileData(this.props.category, this.custom.getColors(this.props.category)), this.props.category)
+                option: this.getOption(this.getTitle(), this.compileData(this.props.category, this.getColors()), this.props.category)
             });
         }
     }
