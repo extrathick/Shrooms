@@ -10,13 +10,14 @@ export default class Calculator extends Component {
         this.calcVal = [];
     }
 
-    returnMethod(keyVal){
+    returnMethod = (keyVal) => {
         this.calcVal.push(keyVal);
+        console.log(this.calcVal);
     }
 
     render() {
         let listItems = this.list.map((listItem) =>
-            <CalcSubclass key={listItem} category={listItem} />
+            <CalcSubclass key={listItem} category={listItem} ret={this.returnMethod} />
         );
         return (
             <div>
