@@ -19,7 +19,7 @@ export default class SunburstController extends Component {
         this.setState((state, props) => {
             return {
                 inner: inner,
-                outer: state.outer
+
             };
         });
     }
@@ -27,15 +27,13 @@ export default class SunburstController extends Component {
     setOuter = (outer) => {
         this.setState((state, props) => {
             return {
-                inner: state.inner,
+
                 outer: outer
             };
         });
     }
 
     render() {
-        console.log(this.state.inner);
-        
         return (
         <div style={{width: '100%'}}>
         <GenericBarChart title='default' category={this.state.inner} colors='default' />
@@ -46,8 +44,6 @@ export default class SunburstController extends Component {
                 outer={this.state.outer}
                 style={{height: '500px', width: '100%'}}
             />
-        <GenericBarChart title='default' category={this.state.outer} colors='default' />
-        <GenericClusteredBarChart title='default' category={this.state.inner} category2={this.state.outer} colors='default' />
         </div>
         )
     }

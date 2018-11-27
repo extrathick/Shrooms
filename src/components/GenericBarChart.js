@@ -7,20 +7,19 @@ class GenericBarChart extends React.Component {
 
     constructor(props) {
         super(props);
-        // this.title = this.props.title;
-        // this.colors = this.props.colors;
+
         this.look = new lookup();
         this.custom = new customColors();
         this.state = {
             category: this.props.category,
-            colors: this.props.colors,
+            colors: null,
             data: null,
-            title: this.props.title,
+            title: null,
             option: null
         }
-        // this.getTitle();
-        // this.getColors();
-        this.getDefault();
+
+        this.state.colors = this.props.colors === 'default' ? this.custom.getColors(this.state.category) : this.props.colors;
+        this.state.title = this.props.title === 'default' ? this.look.getTitle(this.state.category) : this.props.title;
         this.state.data = this.compileData(this.state.category, this.state.colors);
         this.state.option = this.getOption(this.state.title, this.state.data, this.state.category);
 
@@ -31,21 +30,6 @@ class GenericBarChart extends React.Component {
             title: this.look.getTitle(this.state.category),
             colors: this.custom.getColors(this.state.categroy)
         });
-    }
-
-    getTitle() {             
-        if (this.state.title === 'default') {
-            this.setState({
-                title: this.look.getTitle(this.state.category)
-            });
-        }
-    }
-    getColors() {
-        if (this.state.colors === 'default') {
-            this.setState({
-                colors: this.custom.getColors(this.state.category)
-            });
-        }
     }
 
     getOption(title, data, category) {
@@ -97,7 +81,7 @@ class GenericBarChart extends React.Component {
             option.xAxis.data.push(name);
         });
         option.series.push({ data, type: 'bar' });
-        // option.series[0].name = header[0];
+
         return option;
     }
 
@@ -117,13 +101,13 @@ class GenericBarChart extends React.Component {
         return series;
     }
 
-    componentDidUpdate(prevProps){
+    componentDidUpdate(prevProps){      
+        
         if(this.props.category !== prevProps.category){
             this.setState({
-                category: this.props.category
-            });
-            this.getDefault();
-            this.setState({
+                title: this.look.getTitle(this.state.category),
+                colors: this.custom.getColors(this.state.categroy),
+                category: this.props.category,
                 data: this.compileData(this.state.category, this.state.colors),
                 option: this.getOption(this.state.title, this.state.data, this.state.category)
             }); 
