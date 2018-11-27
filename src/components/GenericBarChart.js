@@ -11,17 +11,10 @@ class GenericBarChart extends React.Component {
         this.look = new lookup();
         this.custom = new customColors();
         this.state = {
-            category: this.props.category,
-            colors: null,
-            data: null,
-            title: null,
-            option: null
+                    //option: title, data, category
+            option: this.getOption(this.look.getTitle(this.props.category), this.compileData(this.props.category, this.custom.getColors(this.props.category)), this.props.category)
         }
 
-        this.state.colors = this.props.colors === 'default' ? this.custom.getColors(this.state.category) : this.props.colors;
-        this.state.title = this.props.title === 'default' ? this.look.getTitle(this.state.category) : this.props.title;
-        this.state.data = this.compileData(this.state.category, this.state.colors);
-        this.state.option = this.getOption(this.state.title, this.state.data, this.state.category);
 
     }
 
@@ -101,17 +94,11 @@ class GenericBarChart extends React.Component {
         return series;
     }
 
-    componentDidUpdate(prevProps){      
-        
+    componentDidUpdate(prevProps){              
         if(this.props.category !== prevProps.category){
             this.setState({
-                title: this.look.getTitle(this.state.category),
-                colors: this.custom.getColors(this.state.categroy),
-                category: this.props.category,
-                data: this.compileData(this.state.category, this.state.colors),
-                option: this.getOption(this.state.title, this.state.data, this.state.category)
-            }); 
-          
+                option: this.getOption(this.look.getTitle(this.props.category), this.compileData(this.props.category, this.custom.getColors(this.props.category)), this.props.category)
+            });
         }
     }
 
