@@ -4,7 +4,6 @@ import GenericBarChart from '../components/GenericBarChart';
 import GenericClusteredBarChart from '../components/GenericClusteredBarChart';
 import lookup from '../lib/csvValueLookup';
 import { Dropdown } from 'semantic-ui-react';
-import { HookMapInterceptor } from 'tapable';
 
 export default class SunburstController extends Component {
     constructor(props){
@@ -15,10 +14,6 @@ export default class SunburstController extends Component {
             inner: 'class',
             outer: 'class'
         }
-    }
-    log(event) {
-        console.log(event);
-        
     }
 
     setHeader = () => {

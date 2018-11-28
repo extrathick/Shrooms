@@ -14,8 +14,6 @@ class GenericBarChart extends React.Component {
             //option: title, data, category
             option: this.getOption(this.getTitle(), this.compileData(this.props.category, this.getColors()), this.props.category)
         }
-
-
     }
 
     getTitle() {
