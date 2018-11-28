@@ -31,6 +31,24 @@ export default class Calculator extends Component {
         else {
             this.calcVal.push(keyVal);
         }
+        this.calculateEdibility();
+    }
+
+    // this function calcultes the edibility of a 
+    calculateEdibility = () => {
+        let newEdibility = .5;
+        if(this.calcVal.length !== 0){
+            let shortCalcVal = [];
+            // this normalizes our data so we don't have to write another weird computation method
+            for(let item of this.calcVal){
+                shortCalcVal.push({
+                    key: item.key,
+                    value: this.look.getShortValue(item.key, item.value)
+                });
+            }
+            newEdibility = this.look.getPoisonChance(shortCalcVal);
+        }
+        this.setState({edibility: newEdibility})
     }
 
     // this renders out the dom, mostly just calcsubclasses
@@ -40,7 +58,11 @@ export default class Calculator extends Component {
         );
         return (
             <div>
-                <h3>Chance of Edibility: {this.state.edibility * 100}%</h3>
+                {/* Check to see if the data is valid and can be computed */}
+                <h3>{(this.state.edibility > 0) ? 
+                    `Chance of Edibility: ${this.state.edibility * 100}%` :
+                    `No Data Found`
+                }</h3>
                 {listItems}
             </div>
         )
