@@ -89,13 +89,14 @@ class GenericClusteredBarChart extends React.Component {
         names[0].forEach((name, index) => {
             option.legend.data.push(name);
             option.series[index].name = name;
-        });        
+        });
 
         return option;
     }
 
     componentDidUpdate(prevProps) {
         if (this.props !== prevProps) {
+            this.state.option = null;
             this.setState({
                 option: this.getOption(this.getTitle(), this.look.getCountComparingTwoCategories(this.props.category, this.props.category2), this.props.category, this.props.category2, this.getColors())
             });
@@ -103,13 +104,17 @@ class GenericClusteredBarChart extends React.Component {
     }
 
     render() {
-
-        return (
-            <ReactEcharts
-                option={this.state.option}
-                style={{ height: '500px', width: '100%' }}
-            />
-        )
+        if (this.state.option.legend.data.length === this.look.getAllPossible(this.props.category2).length){
+            return (
+                <ReactEcharts
+                    option={this.state.option}
+                    style={{ height: '500px', width: '100%' }}
+                />
+            )
+        }
+        else{
+            return (null);
+        }
     }
 
 }

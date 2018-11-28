@@ -11,7 +11,7 @@ export default class SunburstController extends Component {
         this.headers = this.look.getCategories();
         this.state = {
             inner: 'class',
-            outer: 'bruises'
+            outer: 'class'
         }
     }
 
