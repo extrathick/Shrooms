@@ -3,10 +3,10 @@ import GenericEchartsSunburst from '../components/GenericEchartsSunburst';
 import GenericBarChart from '../components/GenericBarChart';
 import GenericClusteredBarChart from '../components/GenericClusteredBarChart';
 import lookup from '../lib/csvValueLookup';
-import { Dropdown } from 'semantic-ui-react';
+import { Dropdown, Grid, GridColumn, GridRow } from 'semantic-ui-react';
 
 export default class SunburstController extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.look = new lookup();
         this.headers = this.setHeader();
@@ -50,18 +50,34 @@ export default class SunburstController extends Component {
     render() {
 
         return (
-        <div style={{width: '100%'}}>
-            <Dropdown placeholder='Select First Value' fluid search selection options={this.headers} onChange={(event, data) => this.setInner(data.value)}/>
-            <Dropdown placeholder='Select Second Value' fluid search selection options={this.headers} onChange={(event, data) => this.setOuter(data.value)}/>
-            <GenericBarChart title='default' category={this.state.inner} colors='default' />
-            <GenericEchartsSunburst 
-                inner={this.state.inner}
-                outer={this.state.outer}
-                style={{height: '500px', width: '100%'}}
-            />
-            <GenericBarChart title='default' category={this.state.outer} colors='default' />
-            <GenericClusteredBarChart title='default' category={this.state.inner} category2={this.state.outer} colors='default' />
-        </div>
+            <Grid style={{ height: '100vh', width: '90vw' }}>
+                <GridRow>
+                    <GridColumn width={8}>
+                        <Dropdown placeholder='Select First Value' fluid search selection options={this.headers} onChange={(event, data) => this.setInner(data.value)} />
+                    </GridColumn>
+                    <GridColumn width={8}>
+                        <Dropdown placeholder='Select Second Value' fluid search selection options={this.headers} onChange={(event, data) => this.setOuter(data.value)} />
+                    </GridColumn>
+                </GridRow>
+                <GridRow>
+                    <GridColumn width={5}>
+                        <GenericBarChart title='default' category={this.state.inner} colors='default' />
+                    </GridColumn>
+                    <GridColumn width={5}>
+                        <GenericEchartsSunburst
+                            inner={this.state.inner}
+                            outer={this.state.outer}
+                            style={{ height: '500px', width: '100%' }}
+                        />
+                    </GridColumn>
+                    <GridColumn width={5}>
+                        <GenericBarChart title='default' category={this.state.outer} colors='default' />
+                    </GridColumn>
+                </GridRow>
+                <GridRow>
+                    <GenericClusteredBarChart title='default' category={this.state.inner} category2={this.state.outer} colors='default' />
+                </GridRow>
+            </Grid>
         )
     }
 }

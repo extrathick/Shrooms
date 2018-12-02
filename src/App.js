@@ -14,8 +14,11 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <SunburstController />
-          {/* <GenericBarChart title='default' category='class' colors='default' />
+          <div style={{marginBottom: '30vh'}}>
+            <SunburstController />
+          </div>
+
+          <GenericBarChart title='default' category='class' colors='default' />
           <ChartSummary category='class' category2='none' text='default' />
           <GenericBarChart title='default' category='cap-color' colors='default' />
           <ChartSummary category='cap-color' category2='none' text='default' />
@@ -27,7 +30,7 @@ class App extends Component {
           <GenericBarChart title='default' category='population' colors='default' />
           <GenericClusteredBarChart title='default' category='odor' category2='class' colors='default' />
           <GenericClusteredBarChart title='default' category='odor' category2='population' colors='default' />
-          <ChartSummary category='odor' category2='population' text='default' /> */}
+          <ChartSummary category='odor' category2='population' text='default' />
         </header>
       </div>
     );
