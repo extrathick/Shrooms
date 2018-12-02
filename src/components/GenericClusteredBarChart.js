@@ -96,6 +96,7 @@ class GenericClusteredBarChart extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (this.props !== prevProps) {
+            // eslint-disable-next-line
             this.state.option = null;
             this.setState({
                 option: this.getOption(this.getTitle(), this.look.getCountComparingTwoCategories(this.props.category, this.props.category2), this.props.category, this.props.category2, this.getColors())

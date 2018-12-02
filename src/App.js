@@ -1,12 +1,12 @@
 /* THIS IS THE ROOT OF THE APP */
 
 import React, { Component } from 'react';
-import logo from './pics/logo.svg'; //Import components/Images from folders like this
+import logo from './pics/shroom.png'; //Import components/Images from folders like this
 import './App.css';
 import SunburstController from './components/SunburstController';
-import GenericBarChart from './components/GenericBarChart';
-import GenericClusteredBarChart from './components/GenericClusteredBarChart';
-import ChartSummary from './components/ChartSummary';
+//import GenericBarChart from './components/GenericBarChart';
+//import GenericClusteredBarChart from './components/GenericClusteredBarChart';
+//import ChartSummary from './components/ChartSummary';
 
 class App extends Component {
   render() {
