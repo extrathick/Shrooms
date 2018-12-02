@@ -1,13 +1,14 @@
 /* THIS IS THE ROOT OF THE APP */
 
 import React, { Component } from 'react';
-import logo from './pics/logo.svg'; //Import components/Images from folders like this
+import logo from './pics/shroom.png'; //Import components/Images from folders like this
 import './App.css';
 import SunburstController from './components/SunburstController';
-import GenericBarChart from './components/GenericBarChart';
-import GenericClusteredBarChart from './components/GenericClusteredBarChart';
-import ChartSummary from './components/ChartSummary';
 import Calculator from './components/Calculator';
+//import ChartSummary from './components/ChartSummary';
+//import GenericBarChart from './components/GenericBarChart';
+//import GenericClusteredBarChart from './components/GenericClusteredBarChart';
+
 
 class App extends Component {
   render() {
@@ -16,8 +17,10 @@ class App extends Component {
         <header className="App-header">
           <Calculator />
           <img src={logo} className="App-logo" alt="logo" />
-          <SunburstController />
-          <GenericBarChart title='default' category='class' colors='default' />
+          <div style={{marginBottom: '30vh'}}>
+            <SunburstController />
+          </div>
+          {/* <GenericBarChart title='default' category='class' colors='default' />
           <ChartSummary category='class' category2='none' text='default' />
           <GenericBarChart title='default' category='cap-color' colors='default' />
           <ChartSummary category='cap-color' category2='none' text='default' />
@@ -29,7 +32,7 @@ class App extends Component {
           <GenericBarChart title='default' category='population' colors='default' />
           <GenericClusteredBarChart title='default' category='odor' category2='class' colors='default' />
           <GenericClusteredBarChart title='default' category='odor' category2='population' colors='default' />
-          <ChartSummary category='odor' category2='population' text='default' />
+          <ChartSummary category='odor' category2='population' text='default' /> */}
         </header>
       </div>
     );

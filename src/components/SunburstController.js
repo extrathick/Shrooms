@@ -1,23 +1,40 @@
 import React, { Component } from 'react'
 import GenericEchartsSunburst from '../components/GenericEchartsSunburst';
+import GenericBarChart from '../components/GenericBarChart';
+import GenericClusteredBarChart from '../components/GenericClusteredBarChart';
 import lookup from '../lib/csvValueLookup';
+import { Dropdown, Grid, GridColumn, GridRow } from 'semantic-ui-react';
+import ChartSummary from '../components/ChartSummary';
 
 export default class SunburstController extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.look = new lookup();
-        this.headers = this.look.getCategories();
+        this.headers = this.setHeader();
         this.state = {
             inner: 'class',
-            outer: 'bruises'
+            outer: 'class'
         }
+    }
+
+    setHeader = () => {
+        let header = [];
+        let category = this.look.getCategories();
+        category.forEach(element => {
+            header.push({
+                text: element,
+                value: element
+            });
+        });
+
+        return header;
     }
 
     setInner = (inner) => {
         this.setState((state, props) => {
             return {
                 inner: inner,
-                outer: state.outer
+
             };
         });
     }
@@ -25,41 +42,51 @@ export default class SunburstController extends Component {
     setOuter = (outer) => {
         this.setState((state, props) => {
             return {
-                inner: state.inner,
+
                 outer: outer
             };
         });
     }
 
     render() {
+
         return (
-        <div style={{width: '100%'}}>
-        <Dropdown items={this.headers} onChange={(event) => this.setInner(event.target.value)} selected={this.state.inner}/>
-        <Dropdown items={this.headers} onChange={(event) => this.setOuter(event.target.value)} selected={this.state.outer}/>
-            <GenericEchartsSunburst 
-                inner={this.state.inner}
-                outer={this.state.outer}
-                style={{height: '500px', width: '100%'}}
-            />
-        </div>
+            <Grid style={{ height: '100vh', width: '90vw' }}>
+                <GridRow style={{height: '10vh'}}>
+                    <GridColumn width={8}>
+                        <Dropdown placeholder='Select First Value' fluid search selection options={this.headers} onChange={(event, data) => this.setInner(data.value)} />
+                    </GridColumn>
+                    <GridColumn width={8}>
+                        <Dropdown placeholder='Select Second Value' fluid search selection options={this.headers} onChange={(event, data) => this.setOuter(data.value)} />
+                    </GridColumn>
+                </GridRow>
+                <GridRow style={{height: '45vh'}}>
+                    <GridColumn width={5}>
+                        <GenericBarChart title='default' category={this.state.inner} colors='default' />
+                    </GridColumn>
+                    <GridColumn width={5}>
+                        <GenericEchartsSunburst
+                            inner={this.state.inner}
+                            outer={this.state.outer}
+                            style={{ height: '100%', width: '100%' }}
+                        />
+                    </GridColumn>
+                    <GridColumn width={5}>
+                        <GenericBarChart title='default' category={this.state.outer} colors='default' />
+                    </GridColumn>
+                </GridRow>
+                <GridRow style={{height: '45vh'}}>
+                    <GenericClusteredBarChart title='default' category={this.state.inner} category2={this.state.outer} colors='default' />
+                </GridRow>
+                <GridRow>
+                    <GridColumn>
+                        <ChartSummary category={this.state.inner} category2={this.state.outer} text='default' />
+                    </GridColumn>
+                </GridRow>
+            </Grid>
+                
         )
     }
 }
-const Dropdown = (props) => {
-    let items = props.items.map(item => {
-        if(props.selected){
-            if(props.selected === item){
-                // just changed this to remove the error in the console
-                // return <option key={item} value={item} selected={"selected"}>{item}</option>
-                return <option key={item} value={item} >{item}</option>
-            }
-        }
-        return <option key={item} value={item}>{item}</option>
-    });
-    return (
-      <select selected={props.selected} onChange={props.onChange}>
-          {items}
-      </select>
-    )
-}
+
 
