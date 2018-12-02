@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import lookup from '../../lib/csvValueLookup';
 import styled from 'styled-components';
+import { Button } from 'semantic-ui-react'
 
 // The title for each section of the calculator
 const Title = styled.p `
@@ -38,7 +39,7 @@ export default class CalcSubclass extends Component {
                 key: this.state.category,
                 value: arg.target.value
             }, clicked);
-            arg.target.style='color: red';
+            // arg.target.style='color: red';
         }
         else {
             this.props.ret({
@@ -48,7 +49,7 @@ export default class CalcSubclass extends Component {
             this.setState({
                 chosen: false
             });
-            arg.target.style='color: black';
+            // arg.target.style='color: black';
         }
     }
     render() {
@@ -66,18 +67,6 @@ export default class CalcSubclass extends Component {
         )
     }
 }
-
-// our buttons for the calculator
-const Button = styled.button `
-    display: inline-block;
-    padding-left: 1vw;
-    padding-right: 1vw;
-    background-color:#d8d8d8;
-    border:white;
-    color:black;
-    border-radius:1vw;
-    height: 3vw;
-`;
 
 
 // i need this for state
@@ -99,7 +88,7 @@ class ItemButton extends Component {
       // disabled here is either false or the passed value of disabled. This allows us to selectively disable all but one element.
       // this.props.children is the elements inside the button. Since we're using a styled component, we need to do this. 
     return (
-        <Button onClick={this.clicc} value={this.props.value} disabled={this.state.clicked ? false : this.props.disabled}>{this.props.children}</Button>
+        <Button onClick={this.clicc} value={this.props.value} toggle active={this.state.clicked} disabled={this.state.clicked ? false : this.props.disabled}>{this.props.children}</Button>
     )
   }
 }
