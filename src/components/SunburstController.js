@@ -51,7 +51,7 @@ export default class SunburstController extends Component {
 
         return (
             <Grid style={{ height: '100vh', width: '90vw' }}>
-                <GridRow>
+                <GridRow style={{height: '10vh'}}>
                     <GridColumn width={8}>
                         <Dropdown placeholder='Select First Value' fluid search selection options={this.headers} onChange={(event, data) => this.setInner(data.value)} />
                     </GridColumn>
@@ -59,7 +59,7 @@ export default class SunburstController extends Component {
                         <Dropdown placeholder='Select Second Value' fluid search selection options={this.headers} onChange={(event, data) => this.setOuter(data.value)} />
                     </GridColumn>
                 </GridRow>
-                <GridRow>
+                <GridRow style={{height: '45vh'}}>
                     <GridColumn width={5}>
                         <GenericBarChart title='default' category={this.state.inner} colors='default' />
                     </GridColumn>
@@ -67,14 +67,14 @@ export default class SunburstController extends Component {
                         <GenericEchartsSunburst
                             inner={this.state.inner}
                             outer={this.state.outer}
-                            style={{ height: '500px', width: '100%' }}
+                            style={{ height: '100%', width: '100%' }}
                         />
                     </GridColumn>
                     <GridColumn width={5}>
                         <GenericBarChart title='default' category={this.state.outer} colors='default' />
                     </GridColumn>
                 </GridRow>
-                <GridRow>
+                <GridRow style={{height: '45vh'}}>
                     <GenericClusteredBarChart title='default' category={this.state.inner} category2={this.state.outer} colors='default' />
                 </GridRow>
             </Grid>
