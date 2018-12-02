@@ -4,9 +4,10 @@ import React, { Component } from 'react';
 import logo from './pics/shroom.png'; //Import components/Images from folders like this
 import './App.css';
 import SunburstController from './components/SunburstController';
+//import ChartSummary from './components/ChartSummary';
 //import GenericBarChart from './components/GenericBarChart';
 //import GenericClusteredBarChart from './components/GenericClusteredBarChart';
-//import ChartSummary from './components/ChartSummary';
+
 
 class App extends Component {
   render() {
@@ -17,7 +18,6 @@ class App extends Component {
           <div style={{marginBottom: '30vh'}}>
             <SunburstController />
           </div>
-
           {/* <GenericBarChart title='default' category='class' colors='default' />
           <ChartSummary category='class' category2='none' text='default' />
           <GenericBarChart title='default' category='cap-color' colors='default' />

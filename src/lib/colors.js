@@ -2,12 +2,16 @@ import lookup from '../lib/csvValueLookup';
 
 class customColors {
 
-    getColors(category){
+    getColors(category, category2){
 
         this.look = new lookup()
         let colors = []
 
-        console.log(this.look.getAllPossible(category))
+        if (category2 !== undefined) {
+            if (this.look.getAllPossible(category).length < this.look.getAllPossible(category2).length) {
+                category = category2;
+            }
+        }
 
         // setting color based on category
         if (category === 'class'){

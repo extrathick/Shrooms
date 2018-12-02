@@ -4,6 +4,7 @@ import GenericBarChart from '../components/GenericBarChart';
 import GenericClusteredBarChart from '../components/GenericClusteredBarChart';
 import lookup from '../lib/csvValueLookup';
 import { Dropdown, Grid, GridColumn, GridRow } from 'semantic-ui-react';
+import ChartSummary from '../components/ChartSummary';
 
 export default class SunburstController extends Component {
     constructor(props) {
@@ -77,7 +78,13 @@ export default class SunburstController extends Component {
                 <GridRow style={{height: '45vh'}}>
                     <GenericClusteredBarChart title='default' category={this.state.inner} category2={this.state.outer} colors='default' />
                 </GridRow>
+                <GridRow>
+                    <GridColumn>
+                        <ChartSummary category={this.state.inner} category2={this.state.outer} text='default' />
+                    </GridColumn>
+                </GridRow>
             </Grid>
+                
         )
     }
 }
