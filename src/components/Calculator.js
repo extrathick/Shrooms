@@ -7,9 +7,6 @@ export default class Calculator extends Component {
         super(props);
         this.look = new lookup();
         this.list = this.look.getCategories();
-        // this gets rid of "class". the order of getCategories should not change for any reason, so this is an okay hack. 
-        // the calculator tells you if it's edible so this is okay for the most part. 
-        this.list.splice(0, 1);
         // calcval keeps track of all the values selected in the calculator
         // this should potentially be state, but this keeps redraws down.
         this.calcVal = [];
@@ -34,17 +31,19 @@ export default class Calculator extends Component {
         this.calculateEdibility();
     }
 
-    // this function calcultes the edibility of a 
+    // this function calcultes the edibility of a selection of attributes
     calculateEdibility = () => {
         let newEdibility = .5;
         if(this.calcVal.length !== 0){
             let shortCalcVal = [];
             // this normalizes our data so we don't have to write another weird computation method
             for(let item of this.calcVal){
-                shortCalcVal.push({
-                    key: item.key,
-                    value: this.look.getShortValue(item.key, item.value)
-                });
+                if(item !== 'class'){
+                    shortCalcVal.push({
+                        key: item.key,
+                        value: this.look.getShortValue(item.key, item.value)
+                    });
+                }
             }
             newEdibility = this.look.getPoisonChance(shortCalcVal);
         }
@@ -53,9 +52,16 @@ export default class Calculator extends Component {
 
     // this renders out the dom, mostly just calcsubclasses
     render() {
-        let listItems = this.list.map((listItem) =>
-            <CalcSubclass key={listItem} category={listItem} ret={this.returnMethod} />
-        );
+        let listItems = this.list.map((listItem, index) => {
+            if(index === 0){
+                return null;
+            }
+            else{
+                return (
+                    <CalcSubclass key={listItem} category={listItem} ret={this.returnMethod} />
+                );
+            }
+        });
         return (
             <div>
                 {/* Check to see if the data is valid and can be computed */}

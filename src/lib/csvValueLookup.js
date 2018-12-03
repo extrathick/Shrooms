@@ -60,7 +60,7 @@ class lookup{
             });
         });
 
-        return count;        
+        return count;
     }
 
     //takes a category and returns the subcategory and its count in the mushroom dataset as an array. 
@@ -124,7 +124,10 @@ class lookup{
 
     // Returns all categories
     getCategories(){
-        return mushroom.header
+        // you might wonder wtf is up with this.
+        // turns out this just returns a reference to mushroom.header, so if anything modifies it, all copies are modified.
+        // this fixes this.
+        return mushroom.header;
     }
 
     // Returns generic title
