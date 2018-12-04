@@ -80,7 +80,7 @@ export default class SunburstController extends Component {
                 </GridRow>
                 <GridRow style={{height: '20vh'}}>
                     <GridColumn>
-                        <ChartSummary category={this.state.inner} category2={this.state.outer} text='default' />
+                        <ChartSummary category={this.state.outer} category2={this.state.inner} text='default' />
                     </GridColumn>
                 </GridRow>
             </Grid>
