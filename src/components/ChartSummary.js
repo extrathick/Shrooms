@@ -33,17 +33,17 @@ class ChartSummary extends React.Component {
             // prewritten chart summaries
             // odor
             if ((category === 'odor' && category2 === 'class') || (category === 'class' && category2 === 'odor')) {
-                summary = 'Odor is a strong indicator of edibility. If a mushroom smells like almonds or anise it is edible. The only ambiguous case is when it has no smell. If it smells like creosote, fishy, foul, musty, pungent, or spicy the mushroom is poisonous.';
+                summary = 'Odor is a strong indicator of edibility. If a mushroom smells nice (almonds or anise) it is edible. If it smells bad (creosote, fishy, foul, musty, pungent, or spicy) the mushroom is poisonous. The only ambiguous case is when it has no smell. No smell is still likely to be edible about 97% of the time.';
             }
             // gill color
             else if ((category === 'gill-color' && category2 === 'class') || (category === 'class' && category2 === 'gill-color')) {
-                summary = 'Gill colors is a strong indicator of edibility. Within our data set gills colored buff or green are distinctly poisonous. Gills colored orange and red are always edible.';
+                summary = 'Buff color gills are the most common and each of those samples are poisonous. Green is less common but it is distinctly poisonous. Gills colored orange and red are always edible.';
             }
             else if ((category === 'ring-type' && category2 === 'class') || (category === 'class' && category2 === 'ring-type')) {
-                summary = 'Ring type has three distinct cases for determining if a mushroom is edible. If the mushroom has the ring type of large or none it is poisonous. If the mushroom has a flaring ring type it is edible.';
+                summary = 'A ring (if present) is formed around the stipe (stalk). 15% of our samples have large rings and they are only poisonous. I small set of mushrooms are flared rings and they are all edible.';
             }            
             else if ((category === 'gill-spacing' && category2 === 'class') || (category === 'class' && category2 === 'gill-spacing')) {
-                summary = 'Gill spacing can be used to indicate that a mushroom is most likely edible if the gills are crowded. Mushroom with crowded gills are 91% likely to be edible.';
+                summary = 'Gill spacing can be used to indicate that a mushroom is most likely edible if the gills are crowded. Mushrooms with crowded gills are 91% likely to be edible.';
             }      
             else {
                 // GenericBarChart
