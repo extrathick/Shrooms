@@ -17,11 +17,3 @@
     overflow: scroll;
     height: 55vh;
 }
-
-default-categories {
-    color: blue;
-}
-
-.ui.basic.fluid.inverted.button.category {
-    margin: 1vh;
-}
