@@ -17,6 +17,7 @@ export default class Calculator extends Component {
         this.totalList = visibleItems.map(value => value.category);
         this.smallList = ["odor", "gill-color", "ring-type", "gill-spacing"];
         this.state = {
+            clicked: false,
             column: false,
             edibility: .5,
             visibleItems: [],//list,
@@ -117,7 +118,7 @@ export default class Calculator extends Component {
             list = filteredList;
         }
         return(
-            list.map(item => <Button onClick={() => this.toggleSubcategories(item)} key={item}>{item}</Button>)
+            list.map(item => <Button fluid basic inverted className="category" onClick={() => this.toggleSubcategories(item)} key={item}>{item}</Button>)
         );
     }
 
@@ -177,16 +178,16 @@ export default class Calculator extends Component {
                 <Grid >
                     <GridRow>
                     {this.state.column === true ?
-                        <GridColumn className="hidden-categories">
+                        <GridColumn width={2} className="hidden-categories">
                             {this.createCategoryButtons(false)}
                         </GridColumn> : null}
-                        <GridColumn className="default-categories">
-                            <button class='ui yellow basic button' onClick={this.toggleColumn}>{this.state.column === true ? `Show Less` : `Show More`}</button>
+                        <GridColumn width={2} className="default-categories">
+                            <button class='ui yellow fluid basic button' onClick={this.toggleColumn}>{this.state.column === true ? `Show Less` : `Show More`}</button>
                             {this.createCategoryButtons(true)}
                         </GridColumn>
 
 
-                        <GridColumn >
+                        <GridColumn width={12}>
                             <GridRow className="result">
                                 <Header>{(this.state.edibility >= 0) ?
                                     `Chance of Edibility: ${(this.state.edibility * 100).toPrecision(4)}%` :

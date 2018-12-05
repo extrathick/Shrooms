@@ -2,21 +2,26 @@
     border: 1px solid white;
     border-radius: 50px;
     height: 5vh;
-    width: 40vw;
+    width: 100%;
+    margin-bottom: 2vh;
 }
 
 .subcategories {
     border: 1px solid white;
     height: 50vh;
-    width: 85vw;
+    width: 100%;
+    overflow-y: auto;
 }
 
 .hidden-categories {
     overflow: scroll;
     height: 55vh;
-    width: 50vw;
 }
 
 default-categories {
     color: blue;
+}
+
+.ui.basic.fluid.inverted.button.category {
+    margin: 1vh;
 }

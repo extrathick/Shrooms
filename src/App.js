@@ -19,7 +19,9 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <div style={{marginBottom: '15vh'}}>
-        <Calculator />
+        <div style={{margin: '5vh'}}>
+          <Calculator />
+        </div>
             <SunburstController />
           </div>
           <div style={{ height: '90vh', width: '90vw', marginBottom: '15vh' }}>
