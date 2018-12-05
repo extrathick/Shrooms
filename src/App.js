@@ -2,12 +2,13 @@
 
 import React, { Component } from 'react';
 import logo from './pics/shroom.png'; //Import components/Images from folders like this
+import spacing from './pics/mushroom-gill-spacing.jpg';
+import ring from './pics/mushroom-ring-type.jpg';
 import './App.css';
 import SunburstController from './components/SunburstController';
-import Calculator from './components/Calculator';
-//import ChartSummary from './components/ChartSummary';
+import ChartSummary from './components/ChartSummary';
 //import GenericBarChart from './components/GenericBarChart';
-//import GenericClusteredBarChart from './components/GenericClusteredBarChart';
+import GenericClusteredBarChart from './components/GenericClusteredBarChart';
 
 
 class App extends Component {
@@ -17,10 +18,29 @@ class App extends Component {
         <header className="App-header">
           <Calculator />
           <img src={logo} className="App-logo" alt="logo" />
-          <div style={{marginBottom: '30vh'}}>
+          <div style={{marginBottom: '15vh'}}>
             <SunburstController />
           </div>
-          {/* <GenericBarChart title='default' category='class' colors='default' />
+          <div style={{ height: '90vh', width: '90vw', marginBottom: '15vh' }}>
+            <GenericClusteredBarChart title='default' category='odor' category2='class' colors='default' />
+            <ChartSummary category='odor' category2='class' text='default' />
+          </div>
+          <div style={{ height: '90vh', width: '90vw', marginBottom: '15vh' }}>
+            <GenericClusteredBarChart title='default' category='class' category2='gill-color' colors='default' />
+            <ChartSummary category='class' category2='gill-color' text='default' />
+          </div>
+          <div style={{ height: '90vh', width: '90vw', marginBottom: '40vh' }}>
+            <img src={ring} />
+            <GenericClusteredBarChart title='default' category='ring-type' category2='class' colors='default' />
+            <ChartSummary category='ring-type' category2='class' text='default' />
+          </div>
+          <div style={{ height: '90vh', width: '90vw', marginBottom: '40vh' }}>
+            <img src={spacing} />
+            <GenericClusteredBarChart title='default' category='gill-spacing' category2='class' colors='default' />
+            <ChartSummary category='gill-spacing' category2='class' text='default' />
+          </div>
+          {/*<SunburstController />
+           <GenericBarChart title='default' category='class' colors='default' />
           <ChartSummary category='class' category2='none' text='default' />
           <GenericBarChart title='default' category='cap-color' colors='default' />
           <ChartSummary category='cap-color' category2='none' text='default' />

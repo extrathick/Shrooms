@@ -106,7 +106,7 @@ class GenericEchartsSunburst extends React.Component{
         return (
             <ReactEcharts 
                 option={this.state.option}
-                style={{height: '500px', width: '100%'}}
+                style={{height: '100%', width: '100%'}}
             />
         )
     }
