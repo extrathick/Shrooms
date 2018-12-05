@@ -24,7 +24,7 @@ class App extends Component {
             </Textfit>
           </div>
           <div style={{marginBottom: '15vh', textAlign: 'center'}}>
-            <ChartSummary category='class' category2='class' text='The manual where the data is derived from clearly states that there is no simple rule for determining the edibility of mushrooms. We challenge that statement. By visualizatzing data we hope to find characteristics commonly shared by poisonous and edible mushrooms. These indicators will hopefully form simple rules to follow when encountering an unknown mushroom.' />
+            <ChartSummary category='class' category2='class' text='The manual where the data is derived from clearly states that there is no simple rule for determining the edibility of mushrooms. We challenge that statement. By visualizing data we hope to find characteristics commonly shared by poisonous and edible mushrooms. These indicators will hopefully form simple rules to follow when encountering an unknown mushroom.' />
           </div>
           <div style={{marginBottom: '2vh', textAlign: 'center'}}>
             <Textfit min={50}>

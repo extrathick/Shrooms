@@ -40,7 +40,7 @@ class ChartSummary extends React.Component {
                 summary = 'Buff color gills are the most common and each of those samples are poisonous. Green is less common but it is distinctly poisonous. Gills colored orange and red are always edible.';
             }
             else if ((category === 'ring-type' && category2 === 'class') || (category === 'class' && category2 === 'ring-type')) {
-                summary = 'A ring (if present) is formed around the stipe (stalk). 15% of our samples have large rings and they are only poisonous. I small set of mushrooms are flared rings and they are all edible.';
+                summary = 'A ring (if present) is formed around the stipe (stalk). 15% of our samples have large rings and they are only poisonous. A small set of mushrooms are flared rings and they are all edible.';
             }            
             else if ((category === 'gill-spacing' && category2 === 'class') || (category === 'class' && category2 === 'gill-spacing')) {
                 summary = 'Gill spacing can be used to indicate that a mushroom is most likely edible if the gills are crowded. Mushrooms with crowded gills are 91% likely to be edible.';
