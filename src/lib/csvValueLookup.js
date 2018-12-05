@@ -124,9 +124,6 @@ class lookup{
 
     // Returns all categories
     getCategories(){
-        // you might wonder wtf is up with this.
-        // turns out this just returns a reference to mushroom.header, so if anything modifies it, all copies are modified.
-        // this fixes this.
         return mushroom.header;
     }
 
@@ -185,7 +182,6 @@ class lookup{
         }
         let edibleCount = 0;
         let poisonCount = 0;
-        console.log(arrayPlusIndex)
         for(let row of mushroom.data){
             // this tracks if we pass all tests
             let passed = true;
@@ -211,6 +207,26 @@ class lookup{
         else{
             return (edibleCount/(edibleCount + poisonCount));
         }
+    }
+
+    /*
+    Takes a category and a short value and returns the count of the item in an array of [edible count, poison count]
+    */
+    getValueCount(category, value){
+        // ++ gets angry at you if you don't initialize value :v
+        let result = [0, 0];
+        let categoryNumber = this.getCategoryNumber(category);
+        for(let row of mushroom.data){
+            if(row[categoryNumber] === value){
+                if(row[0] === 'e'){
+                    result[0]++;
+                }
+                else{
+                    result[1]++;
+                }
+            }
+        }
+        return result;
     }
 }
 

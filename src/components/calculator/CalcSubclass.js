@@ -18,13 +18,12 @@ export default class CalcSubclass extends Component {
     constructor(props){
         super(props);
         this.look = new lookup();
-        let list = this.look.getAllPossible(props.category);
+        let list = props.list;
         // just get the 'long' versions from the list of possible values
         let shortList = list.map(item => {
             return item.value;
         });
         this.state = {
-            category: props.category,
             items: shortList,
             chosen: false
         }
@@ -36,13 +35,13 @@ export default class CalcSubclass extends Component {
                 chosen: true
             });
             this.props.ret({
-                key: this.state.category,
+                key: this.props.category,
                 value: arg.target.value
             }, clicked);
         }
         else {
             this.props.ret({
-                key: this.state.category,
+                key: this.props.category,
                 value: arg.target.value
             }, clicked);
             this.setState({
@@ -54,7 +53,7 @@ export default class CalcSubclass extends Component {
         return (
             <div>
             {/* This renders out the title, which is defined above */}
-                <Title>{this.state.category}</Title>
+                <Title>{this.props.category}</Title>
                 <List>
                     {/* This is the bulk of our work, in rendering the ItemButton, which handles a lot of the log. Disabled is to make it disabled later. click is our return method */}
                     {this.state.items.map((item) => {
