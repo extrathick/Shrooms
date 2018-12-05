@@ -39,7 +39,6 @@ export default class CalcSubclass extends Component {
                 key: this.state.category,
                 value: arg.target.value
             }, clicked);
-            // arg.target.style='color: red';
         }
         else {
             this.props.ret({
@@ -49,7 +48,6 @@ export default class CalcSubclass extends Component {
             this.setState({
                 chosen: false
             });
-            // arg.target.style='color: black';
         }
     }
     render() {

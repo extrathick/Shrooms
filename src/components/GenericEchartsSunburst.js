@@ -2,6 +2,7 @@ import React from 'react';
 import lookup from '../lib/csvValueLookup';
 import ReactEcharts from 'echarts-for-react';
 import json from '../data/mushrooms.json';
+import colorTool from '../lib/colors';
 
 // This makes a Sunburst chart. It requires the inner and outer prop to be set to valid categories from the mushroom data
 class GenericEchartsSunburst extends React.Component{
@@ -20,14 +21,24 @@ class GenericEchartsSunburst extends React.Component{
         this.computed = this.compute(inner, outer);
         let data = [];
         // build up the data
-        for(let valueInner of this.computed){
+        let color = new colorTool();
+        const colorsOuter = color.getColors(outer, outer);
+        const colorsInner = color.getColors(inner, inner);
+        for(let [index, valueInner] of this.computed.entries()){
             let obj = {};
             obj.name = valueInner.value;
             obj.children = [];
-            for(let valueOuter of valueInner.outer){
+            obj.itemStyle = {
+                color: colorsInner[index]
+            }
+
+            for(let [index, valueOuter] of valueInner.outer.entries()){
                 let outerObj = {};
                 outerObj.name = valueOuter.value;
                 outerObj.value = valueOuter.number;
+                outerObj.itemStyle = {
+                    color: colorsOuter[index]
+                }
                 obj.children.push(outerObj);
             }
             data.push(obj);
