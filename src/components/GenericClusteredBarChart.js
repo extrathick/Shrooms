@@ -15,11 +15,11 @@ class GenericClusteredBarChart extends React.Component {
     }
 
     getTitle() {
-        return (this.props.title === 'default') ? this.look.getTitle(this.props.category) : this.props.title;
+        return (this.props.title === 'default') ? 'Number of ' + this.look.getTitle(this.props.category) + ' for each ' + this.look.getTitle(this.props.category2) : this.props.title;
     }
 
     getColors() {
-        return (this.props.colors === 'default') ? this.custom.getColors(this.props.category) : this.props.colors;
+        return (this.props.colors === 'default') ? this.custom.getColors(this.props.category, this.props.category2) : this.props.colors;
     }
 
     getOption(title, data, category, category2, colors) {
@@ -83,6 +83,7 @@ class GenericClusteredBarChart extends React.Component {
         }
 
         option.title.text = title;
+
         header[0].forEach((name) => {
             option.xAxis.data.push(name);
         });
@@ -96,6 +97,7 @@ class GenericClusteredBarChart extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (this.props !== prevProps) {
+            // eslint-disable-next-line
             this.state.option = null;
             this.setState({
                 option: this.getOption(this.getTitle(), this.look.getCountComparingTwoCategories(this.props.category, this.props.category2), this.props.category, this.props.category2, this.getColors())
