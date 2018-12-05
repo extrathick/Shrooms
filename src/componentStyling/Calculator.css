@@ -1,0 +1,16 @@
+.result {
+    border: 1px solid white;
+    height: 10vh;
+    width: 50vw;
+}
+
+.subcategories {
+    border: 1px solid white;
+    height: 40vh;
+    width: 85vw;
+}
+
+.hidden-categories {
+    overflow: scroll;
+    height: 50vh;
+}

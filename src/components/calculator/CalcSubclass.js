@@ -3,10 +3,7 @@ import lookup from '../../lib/csvValueLookup';
 import styled from 'styled-components';
 import { Button } from 'semantic-ui-react'
 
-// The title for each section of the calculator
-const Title = styled.p `
-    color: white;
-`;
+
 
 // The list of all the buttons
 const List = styled.div `
@@ -52,8 +49,8 @@ export default class CalcSubclass extends Component {
     render() {
         return (
             <div>
+            <Header category={this.props.category} />
             {/* This renders out the title, which is defined above */}
-                <Title>{this.props.category}</Title>
                 <List>
                     {/* This is the bulk of our work, in rendering the ItemButton, which handles a lot of the log. Disabled is to make it disabled later. click is our return method */}
                     {this.state.items.map((item) => {
@@ -88,4 +85,17 @@ class ItemButton extends Component {
         <Button onClick={this.clicc} value={this.props.value} toggle active={this.state.clicked} disabled={this.state.clicked ? false : this.props.disabled}>{this.props.children}</Button>
     )
   }
+}
+
+// The title for each section of the calculator
+const Title = styled.p `
+    color: white;
+`;
+
+export class Header extends Component {
+    render(){
+        return (
+            <Title>{this.props.category}</Title>
+        );
+    }
 }

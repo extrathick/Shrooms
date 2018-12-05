@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import lookup from '../lib/csvValueLookup';
 import CalcSubclass from './calculator/CalcSubclass';
 import styled from 'styled-components';
+import {Grid, GridColumn, GridRow, Button} from 'semantic-ui-react';
+import '../componentStyling/Calculator.css'
 
 export default class Calculator extends Component {
     constructor(props){
@@ -12,12 +14,13 @@ export default class Calculator extends Component {
         // this should potentially be state, but this keeps redraws down.
         this.calcVal = [];
         let visibleItems = this.getUsedItems();
-        let list = visibleItems.map(value => value.category);
-        console.log(visibleItems);
+        this.totalList = visibleItems.map(value => value.category);
+        this.smallList = ["odor", "gill-color", "ring-type", "gill-spacing"];
         this.state = {
+            column: false,
             edibility: .5,
-            visibleItems: list,
-            vis: visibleItems
+            visibleItems: [],//list,
+            vis: visibleItems//["odor", "gill-color", "ring-type", "gill-spacing"]
         }
     }
 
@@ -35,6 +38,19 @@ export default class Calculator extends Component {
             this.calcVal.push(keyVal);
         }
         this.calculateEdibility();
+    }
+
+    showAll = () => {
+        if(this.state.visibleItems.length > 15){
+            this.setState({
+                visibleItems: this.smallList
+            });
+        }
+        else {
+            this.setState({
+                visibleItems: this.totalList
+            });
+        }
     }
 
     getUsedItems = () => {
@@ -87,11 +103,58 @@ export default class Calculator extends Component {
         this.setState({edibility: newEdibility})
     }
 
+    //Creates the options for the calculator - toggles subcategories
+    createCategoryButtons = (boolean) => {
+        let smallList = this.smallList.slice();
+        let bigList = this.totalList.slice();
+        let filteredList = bigList.filter(word => !smallList.includes(word));
+        let list;
+        // this is necessary don't change
+        if (!(boolean !== !!!false) && !false) {
+            list = smallList;
+        } else {
+            // {this.createCategoryButtons(false).map(item => <p>{item}</p>)}  
+            list = filteredList;
+        }
+        return(
+            list.map(item => <Button onClick={() => this.toggleSubcategories(item)} key={item}>{item}</Button>)
+        );
+    }
+
+    toggleSubcategories = (item) => {
+        if(this.state.visibleItems.includes(item)){
+            let list = [];
+            for(let listItem in this.state.visibleItems){
+                
+                if(this.state.visibleItems[listItem] !== item){
+                    list.push(this.state.visibleItems[listItem]);
+                }
+            }
+
+            this.setState({
+                visibleItems: list
+            });
+        }
+        else{
+            this.setState({
+                visibleItems: [...this.state.visibleItems, item]
+            });
+        }
+    }
+
+    //Toggle for the amount of buttons shown
+    toggleColumn = () => {
+        this.setState({
+            column: !this.state.column
+        });
+    }
+
     // this renders out the dom, mostly just calcsubclasses
     render = () => {
+        // generate all the buttons
         let listItems = this.state.visibleItems.map((listItem, index) => {
-            if(index === 0){
-                // remove the edibilty button because it doesn't make sense
+            // remove the edibilty button because it doesn't make sense
+            if(listItem === "class"){
                 return null;
             }
             else{
@@ -106,14 +169,39 @@ export default class Calculator extends Component {
                 );
             }
         });
+
+        
         return (
             <div>
                 {/* Check to see if the data is valid and can be computed */}
-                <Header>{(this.state.edibility > 0) ? 
-                    `Chance of Edibility: ${(this.state.edibility * 100).toPrecision(4)}%` :
-                    `No Data Found`
-                }</Header>
-                {listItems}
+                <Grid >
+                    <GridRow>
+                    {this.state.column === true ?
+                        <GridColumn className="hidden-categories">
+                            {this.createCategoryButtons(false)}
+                        </GridColumn> : null}
+                        <GridColumn className="default-categories">
+                            <Button onClick={this.toggleColumn}>{this.state.column === true ? `Show Less` : `Show More`}</Button>
+                            {this.createCategoryButtons(true)}
+                        </GridColumn>
+
+
+                        <GridColumn >
+                            <GridRow className="result">
+                                <Header>{(this.state.edibility >= 0) ?
+                                    `Chance of Edibility: ${(this.state.edibility * 100).toPrecision(4)}%` :
+                                    `No such examples in dataset`
+                                }</Header>
+                            </GridRow>
+                            <GridRow className="subcategories">
+                            {listItems}
+                            </GridRow>
+                        </GridColumn>
+                    </GridRow>
+                </Grid>
+
+
+
             </div>
         )
     }

@@ -8,6 +8,7 @@ import './App.css';
 import SunburstController from './components/SunburstController';
 import ChartSummary from './components/ChartSummary';
 //import GenericBarChart from './components/GenericBarChart';
+import Calculator from './components/Calculator';
 import GenericClusteredBarChart from './components/GenericClusteredBarChart';
 
 
