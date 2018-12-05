@@ -29,16 +29,18 @@ class GenericClusteredBarChart extends React.Component {
         let alldata = data;
 
         let option = {
-            color: colors, 
+            color: colors,
             title: {
                 text: 'placeholder',
-                textStyle: { color: "white" },
+                textStyle: { color: "white",
+                            fontSize: 25 },
                 x: 'center',
                 y: 'top'
             },
             legend: {
                 data:[],
-                textStyle: {color: "white"},
+                textStyle: {color: "white",
+                            fontSize: 25},
                 x: 'center',
                 y: 'bottom'
               },            
@@ -46,13 +48,15 @@ class GenericClusteredBarChart extends React.Component {
                 type: 'category',
                 data: [],
                 axisLabel: {
-                    textStyle: { color: "white" }
+                    textStyle: { color: "white",
+                    fontSize: 25 }
                 }
             },
             yAxis: {
                 type: 'value',
                 axisLabel: {
-                    textStyle: { color: 'white' }
+                    textStyle: { color: 'white',
+                    fontSize: 25 },
                 }
             },
             series: [],
@@ -106,6 +110,8 @@ class GenericClusteredBarChart extends React.Component {
     }
 
     render() {
+        console.log(window.innerWidth);
+        console.log(window.innerHeight);
         if (this.state.option.legend.data.length === this.look.getAllPossible(this.props.category2).length){
             return (
                 <ReactEcharts
