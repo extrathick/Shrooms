@@ -110,8 +110,6 @@ class GenericClusteredBarChart extends React.Component {
     }
 
     render() {
-        console.log(window.innerWidth);
-        console.log(window.innerHeight);
         if (this.state.option.legend.data.length === this.look.getAllPossible(this.props.category2).length){
             return (
                 <ReactEcharts

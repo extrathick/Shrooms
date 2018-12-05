@@ -100,9 +100,9 @@ class App extends Component {
             </Textfit>
           </div>
           <div style={{marginBottom: '15vh', textAlign: 'center'}}>
-            <ChartSummary category='class' category2='class' text='Poisonous mushrooms had much more indicators as oppose to edible mushroom. Odor is by far the strongest indicator in the data set. Just by observing odor you can remove half the samples in the mushroom data set. 
+            <ChartSummary category='class' category2='class' text='Poisonous mushrooms had much more indicators as oppose to edible mushroom. Odor is by far the strongest indicator in the data set. Just by observing odor you can remove half the samples in the mushroom data set.
 ' />
-          </div>                            
+          </div>                       
           {/*<SunburstController />
            <GenericBarChart title='default' category='class' colors='default' />
           <ChartSummary category='class' category2='none' text='default' />
