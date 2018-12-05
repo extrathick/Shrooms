@@ -30,6 +30,7 @@ class App extends Component {
           </div>
           <div style={{ height: '90vh', width: '90vw', marginBottom: '40vh' }}>
             <img src={ring} />
+            
             <GenericClusteredBarChart title='default' category='ring-type' category2='class' colors='default' />
             <ChartSummary category='ring-type' category2='class' text='default' />
           </div>

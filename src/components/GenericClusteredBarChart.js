@@ -110,7 +110,8 @@ class GenericClusteredBarChart extends React.Component {
             return (
                 <ReactEcharts
                     option={this.state.option}
-                    style={{ height: '100%', width: '100%' }}
+                    style={{ height: '100%', width: '100%', backgroundColor: "#6d121833", padding: '2%' }}
+                    
                 />
             )
         }
