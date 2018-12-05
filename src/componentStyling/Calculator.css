@@ -1,16 +1,19 @@
 .result {
     border: 1px solid white;
-    height: 10vh;
-    width: 50vw;
+    border-radius: 50px;
+    height: 5vh;
+    width: 40vw;
+    
 }
 
 .subcategories {
     border: 1px solid white;
-    height: 40vh;
+    height: 50vh;
     width: 85vw;
 }
 
 .hidden-categories {
     overflow: scroll;
-    height: 50vh;
+    height: 55vh;
+    width: 50vw;
 }

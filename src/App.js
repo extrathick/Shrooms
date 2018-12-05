@@ -17,9 +17,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Calculator />
           <img src={logo} className="App-logo" alt="logo" />
           <div style={{marginBottom: '15vh'}}>
+        <Calculator />
             <SunburstController />
           </div>
           <div style={{ height: '90vh', width: '90vw', marginBottom: '15vh' }}>
