@@ -3,7 +3,6 @@
     border-radius: 50px;
     height: 5vh;
     width: 40vw;
-    
 }
 
 .subcategories {
@@ -16,4 +15,8 @@
     overflow: scroll;
     height: 55vh;
     width: 50vw;
+}
+
+default-categories {
+    color: blue;
 }

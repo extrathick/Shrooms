@@ -3,12 +3,10 @@ import lookup from '../../lib/csvValueLookup';
 import styled from 'styled-components';
 import { Button } from 'semantic-ui-react'
 
-
-
 // The list of all the buttons
 const List = styled.div `
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
 `;
 
 export default class CalcSubclass extends Component {
@@ -82,7 +80,7 @@ class ItemButton extends Component {
       // disabled here is either false or the passed value of disabled. This allows us to selectively disable all but one element.
       // this.props.children is the elements inside the button. Since we're using a styled component, we need to do this. 
     return (
-        <Button onClick={this.clicc} value={this.props.value} toggle active={this.state.clicked} disabled={this.state.clicked ? false : this.props.disabled}>{this.props.children}</Button>
+        <button class='ui white inverted button' onClick={this.clicc} value={this.props.value} toggle active={this.state.clicked} disabled={this.state.clicked ? false : this.props.disabled}>{this.props.children}</button>
     )
   }
 }

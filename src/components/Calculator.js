@@ -181,7 +181,7 @@ export default class Calculator extends Component {
                             {this.createCategoryButtons(false)}
                         </GridColumn> : null}
                         <GridColumn className="default-categories">
-                            <Button onClick={this.toggleColumn}>{this.state.column === true ? `Show Less` : `Show More`}</Button>
+                            <button class='ui yellow basic button' onClick={this.toggleColumn}>{this.state.column === true ? `Show Less` : `Show More`}</button>
                             {this.createCategoryButtons(true)}
                         </GridColumn>
 
