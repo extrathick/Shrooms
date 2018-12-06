@@ -2,6 +2,7 @@ import React from 'react';
 import lookup from '../lib/csvValueLookup';
 import customColors from '../lib/colors';
 import ReactEcharts from 'echarts-for-react';
+import '../componentStyling/SunburstController.css'
 
 class GenericClusteredBarChart extends React.Component {
 
@@ -112,11 +113,10 @@ class GenericClusteredBarChart extends React.Component {
     render() {
         if (this.state.option.legend.data.length === this.look.getAllPossible(this.props.category2).length){
             return (
-                <ReactEcharts
-                    option={this.state.option}
-                    style={{ height: '100%', width: '100%', backgroundColor: "#6d121833", padding: '2%' }}
-                    
-                />                
+                    <ReactEcharts
+                        option={this.state.option}
+                        style={{ height: '100%', width: '100%', backgroundColor: "rgba(90, 90, 90, 0.2)", padding: '2%' }}                        
+                    />
             )
         }
         else{

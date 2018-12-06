@@ -71,7 +71,7 @@ class ChartSummary extends React.Component {
     render() {
         return (
             // https://github.com/malte-wessel/react-textfit
-            <div className='background'>
+            <div className='background2'>
                 <Textfit mode="multi" 
                 min={25}>
                     {this.state.summary}
