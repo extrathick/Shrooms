@@ -60,7 +60,7 @@ class App extends Component {
               Ring Type
             </Textfit>
           </div>          
-          <img src={ring} />
+          <img src={ring} alt={"Different kinds of Mushroom Rings"}/>
           <div style={{ height: '90vh', width: '90vw', marginBottom: '15vh', textAlign: 'left'}}>
             <GenericClusteredBarChart title='default' category='ring-type' category2='class' colors='default' />
             <ChartSummary category='ring-type' category2='class' text='default' />
@@ -70,7 +70,7 @@ class App extends Component {
               Gill Spacing
             </Textfit> 
           </div>     
-          <img src={spacing} />        
+          <img src={spacing} alt={"Different Mushroom Gill Spacing"} />        
           <div style={{ height: '90vh', width: '90vw', marginBottom: '15vh', textAlign: 'left' }}>
             <GenericClusteredBarChart title='default' category='gill-spacing' category2='class' colors='default' />
             <ChartSummary category='gill-spacing' category2='class' text='default' />
