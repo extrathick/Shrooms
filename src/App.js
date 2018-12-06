@@ -37,15 +37,11 @@ class App extends Component {
           </div>
           <div style={{marginBottom: '15vh', marginRight: '3vw', marginLeft: '3vw', textAlign: 'center'}}>
             <ChartSummary category='class' category2='class' text='Imagine you’re lost in the woods. After several days of no food you encounter two mushrooms. You’ve never seen these mushrooms before. You decide to eat one. What characteristics should you look at to determine if the mushroom is edible?' />
-<<<<<<< HEAD
           </div>  
           <div style={{marginBottom: '15vh'}}>
         <img src={grab} />
             <SunburstController />
           </div>
-=======
-          </div>          
->>>>>>> ccf7283cd025614100b455027ba75e49f5ae214a
           <div style={{marginBottom: '2vh'}}>
             <Textfit min={50}>
               Odor
