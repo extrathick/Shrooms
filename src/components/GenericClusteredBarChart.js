@@ -116,7 +116,7 @@ class GenericClusteredBarChart extends React.Component {
                     option={this.state.option}
                     style={{ height: '100%', width: '100%', backgroundColor: "#6d121833", padding: '2%' }}
                     
-                />
+                />                
             )
         }
         else{
