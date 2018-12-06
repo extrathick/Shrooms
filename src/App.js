@@ -19,12 +19,12 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <div style={{marginBottom: '2vh'}}>
+          <div style={{marginBottom: '2vh', marginRight: '3vw', marginLeft: '3vw', textAlign: 'center'}}>
             <Textfit min={50}>
               Introduction
             </Textfit>
           </div>
-          <div style={{marginBottom: '15vh', marginRight: '3vw', marginLeft: '3vw', textAlign: 'center'}}>
+          <div style={{ height: '10vh', marginBottom: '5vh', marginRight: '3vw', marginLeft: '3vw', textAlign: 'center'}}>
             <ChartSummary category='class' category2='class' text='The manual where the data is derived from clearly states that there is no simple rule for determining the edibility of mushrooms. We challenge that statement. By visualizing data we hope to find characteristics commonly shared by poisonous and edible mushrooms. These indicators will hopefully form simple rules to follow when encountering an unknown mushroom.' />
           </div>
           <div style={{marginBottom: '2vh', textAlign: 'center'}}>
@@ -35,12 +35,6 @@ class App extends Component {
           <div style={{marginBottom: '15vh', marginRight: '3vw', marginLeft: '3vw', textAlign: 'center'}}>
             <ChartSummary category='class' category2='class' text='Imagine you’re lost in the woods. After several days of no food you encounter two mushrooms. You’ve never seen these mushrooms before. You decide to eat one. What characteristics should you look at to determine if the mushroom is edible?' />
           </div>          
-          <div style={{marginBottom: '15vh'}}>
-        <div style={{margin: '5vh'}}>
-          <Calculator />
-        </div>
-            <SunburstController />
-          </div>
           <div style={{marginBottom: '2vh'}}>
             <Textfit min={50}>
               Odor
@@ -75,7 +69,7 @@ class App extends Component {
             </Textfit> 
           </div>     
           <img src={spacing} alt={"Different Mushroom Gill Spacing"} />        
-          <div style={{ height: '90vh', width: '90vw', marginBottom: '15vh', textAlign: 'left' }}>
+          <div style={{ height: '45vh', width: '90vw', marginBottom: '15vh', textAlign: 'left' }}>
             <GenericClusteredBarChart title='default' category='gill-spacing' category2='class' colors='default' />
             <ChartSummary category='gill-spacing' category2='class' text='default' />
           </div>
@@ -106,7 +100,10 @@ class App extends Component {
           <div style={{marginBottom: '15vh', marginRight: '3vw', marginLeft: '3vw', textAlign: 'center'}}>
             <ChartSummary category='class' category2='class' text='Poisonous mushrooms had much more indicators as oppose to edible mushroom. Odor is by far the strongest indicator in the data set. Just by observing odor you can remove half the samples in the mushroom data set.
 ' />
-          </div>                       
+          </div>
+          <div style={{marginBottom: '15vh'}}>
+            <SunburstController />
+          </div>                                 
           {/*<SunburstController />
            <GenericBarChart title='default' category='class' colors='default' />
           <ChartSummary category='class' category2='none' text='default' />

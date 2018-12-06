@@ -1,6 +1,7 @@
 import React from 'react';
 import lookup from '../lib/csvValueLookup';
 import { Textfit } from 'react-textfit';
+import '../componentStyling/ChartSummary.css'
 
 class ChartSummary extends React.Component {
 
@@ -70,10 +71,12 @@ class ChartSummary extends React.Component {
     render() {
         return (
             // https://github.com/malte-wessel/react-textfit
-            <Textfit mode="multi" 
-            min={25}>
-                {this.state.summary}
-            </Textfit>
+            <div className='background'>
+                <Textfit mode="multi" 
+                min={25}>
+                    {this.state.summary}
+                </Textfit>
+            </div>
         );
     }
 }
