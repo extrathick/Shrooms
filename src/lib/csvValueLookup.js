@@ -60,7 +60,7 @@ class lookup{
             });
         });
 
-        return count;        
+        return count;
     }
 
     //takes a category and returns the subcategory and its count in the mushroom dataset as an array. 
@@ -124,7 +124,7 @@ class lookup{
 
     // Returns all categories
     getCategories(){
-        return mushroom.header
+        return mushroom.header;
     }
 
     // Returns generic title
@@ -149,6 +149,84 @@ class lookup{
         let title = this.getTitle(category) + ' vs ' + this.getTitle(category2);
 
         return title;
+    }
+
+
+    // when given a category and the "long version" of the field (i.e. getShortValue('class', 'edible'), it will return e)
+    getShortValue(category, value){
+        for(let jsonCategory of json.jsonArray){
+            if(jsonCategory.key === category){
+                for(let item of jsonCategory.value){
+                    if(item.value === value){
+                        return item.key;
+                    }
+                }
+            }
+        }
+    }
+
+    // this takes an array of key value pairs of category and value and returns the chance out of 1 that you'll get poisoned
+    // the key is the category and the value is short name of the field
+    // the array does not need to be sorted
+    // returns -1 if no data
+    getPoisonChance(array){
+        // we build up a sorted array to save ourselves trouble
+        let arrayPlusIndex = [];
+        for(let item of array){
+            let retObj = {
+                key: item.key,
+                value: item.value,
+                index: this.getCategoryNumber(item.key)
+            }
+            arrayPlusIndex.push(retObj);
+        }
+        let edibleCount = 0;
+        let poisonCount = 0;
+        for(let row of mushroom.data){
+            // this tracks if we pass all tests
+            let passed = true;
+            for(let item of arrayPlusIndex){
+                if(row[item.index] !== item.value){
+                    passed = false;
+                }
+            }
+            if(passed){
+                if(row[0] === 'p'){
+                    poisonCount++;
+                }
+                else{
+                    edibleCount++;
+                }
+            }
+        }
+        // the case in which we have no data
+        if(edibleCount === 0 & poisonCount === 0){
+            return -1;
+        }
+        // the normal case
+        else{
+            return (edibleCount/(edibleCount + poisonCount));
+        }
+    }
+
+    /*
+    Takes a category and a short value and returns the count of the item in an array of [edible count, poison count]
+    */
+    getValueCount(category, value){
+        // ++ gets angry at you if you don't initialize value :v
+        let result = [0, 0];
+        let categoryNumber = this.getCategoryNumber(category);
+        for(let row of mushroom.data){
+            if(row[categoryNumber] === value){
+                if(row[0] === 'e'){
+                    result[0]++;
+                }
+                else{
+                    result[1]++;
+                }
+            }
+        }
+        return result;
     }
 }
 

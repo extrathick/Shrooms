@@ -9,6 +9,7 @@ import './App.css';
 import SunburstController from './components/SunburstController';
 import ChartSummary from './components/ChartSummary';
 //import GenericBarChart from './components/GenericBarChart';
+import Calculator from './components/Calculator';
 import GenericClusteredBarChart from './components/GenericClusteredBarChart';
 import { Textfit } from 'react-textfit';
 
@@ -35,6 +36,9 @@ class App extends Component {
             <ChartSummary category='class' category2='class' text='Imagine you’re lost in the woods. After several days of no food you encounter two mushrooms. You’ve never seen these mushrooms before. You decide to eat one. What characteristics should you look at to determine if the mushroom is edible?' />
           </div>          
           <div style={{marginBottom: '15vh'}}>
+        <div style={{margin: '5vh'}}>
+          <Calculator />
+        </div>
             <SunburstController />
           </div>
           <div style={{marginBottom: '2vh'}}>
