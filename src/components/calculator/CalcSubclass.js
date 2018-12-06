@@ -47,7 +47,7 @@ export default class CalcSubclass extends Component {
     render() {
         return (
             <div>
-            <Header category={this.props.category} />
+            <Header category={this.props.category}/>
             {/* This renders out the title, which is defined above */}
                 <List>
                     {/* This is the bulk of our work, in rendering the ItemButton, which handles a lot of the log. Disabled is to make it disabled later. click is our return method */}
@@ -88,6 +88,7 @@ class ItemButton extends Component {
 // The title for each section of the calculator
 const Title = styled.p `
     color: white;
+    margin-bottom: .5vh;
 `;
 
 export class Header extends Component {

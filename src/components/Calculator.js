@@ -173,8 +173,7 @@ export default class Calculator extends Component {
 
         
         return (
-            <div>
-                {/* Check to see if the data is valid and can be computed */}
+            <div className="background">
                 <Grid >
                     <GridRow>
                     {this.state.column === true ?
@@ -186,7 +185,6 @@ export default class Calculator extends Component {
                             {this.createCategoryButtons(true)}
                         </GridColumn>
 
-
                         <GridColumn width={12}>
                             <GridRow className="result">
                                 <Header>{(this.state.edibility >= 0) ?
@@ -195,14 +193,11 @@ export default class Calculator extends Component {
                                 }</Header>
                             </GridRow>
                             <GridRow className="subcategories">
-                            {listItems}
+                                {listItems}
                             </GridRow>
                         </GridColumn>
                     </GridRow>
                 </Grid>
-
-
-
             </div>
         )
     }
@@ -214,4 +209,5 @@ const Header = styled.h1`
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+    line
 `
