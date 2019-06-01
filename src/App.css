@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  line-height: 20pt;
+  font-size: 15pt;
 }
 
 .App-logo {

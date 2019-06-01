@@ -1,0 +1,23 @@
+.background {
+    background-color: rgba(109, 18, 24, 0.2);
+    width: 95vw;
+    height: 95vh;
+    border-radius: 5px;
+    padding: 2vh 5vw 2vh 5vw;
+}
+
+.ui.fluid.search.selection.dropdown {
+    height: 5vh;
+    min-inline-size: 0px;
+    min-height: 0vh;
+    padding: 10px 10px 10px 10px;
+}
+
+.ui.selection.dropdown>.dropdown.icon{
+    line-height: 0.2rem;
+}
+
+.ui.search.selection.dropdown>input.search {
+    line-height: .02rem;
+    padding: 10px 10px 10px 10px;
+}

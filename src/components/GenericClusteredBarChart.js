@@ -2,6 +2,7 @@ import React from 'react';
 import lookup from '../lib/csvValueLookup';
 import customColors from '../lib/colors';
 import ReactEcharts from 'echarts-for-react';
+import '../componentStyling/SunburstController.css'
 
 class GenericClusteredBarChart extends React.Component {
 
@@ -15,11 +16,11 @@ class GenericClusteredBarChart extends React.Component {
     }
 
     getTitle() {
-        return (this.props.title === 'default') ? this.look.getTitle(this.props.category) : this.props.title;
+        return (this.props.title === 'default') ? 'Number of ' + this.look.getTitle(this.props.category) + ' for each ' + this.look.getTitle(this.props.category2) : this.props.title;
     }
 
     getColors() {
-        return (this.props.colors === 'default') ? this.custom.getColors(this.props.category) : this.props.colors;
+        return (this.props.colors === 'default') ? this.custom.getColors(this.props.category, this.props.category2) : this.props.colors;
     }
 
     getOption(title, data, category, category2, colors) {
@@ -29,16 +30,18 @@ class GenericClusteredBarChart extends React.Component {
         let alldata = data;
 
         let option = {
-            color: colors, 
+            color: colors,
             title: {
                 text: 'placeholder',
-                textStyle: { color: "white" },
+                textStyle: { color: "white",
+                            fontSize: 25 },
                 x: 'center',
                 y: 'top'
             },
             legend: {
                 data:[],
-                textStyle: {color: "white"},
+                textStyle: {color: "white",
+                            fontSize: 25},
                 x: 'center',
                 y: 'bottom'
               },            
@@ -46,13 +49,15 @@ class GenericClusteredBarChart extends React.Component {
                 type: 'category',
                 data: [],
                 axisLabel: {
-                    textStyle: { color: "white" }
+                    textStyle: { color: "white",
+                    fontSize: 25 }
                 }
             },
             yAxis: {
                 type: 'value',
                 axisLabel: {
-                    textStyle: { color: 'white' }
+                    textStyle: { color: 'white',
+                    fontSize: 25 },
                 }
             },
             series: [],
@@ -83,6 +88,7 @@ class GenericClusteredBarChart extends React.Component {
         }
 
         option.title.text = title;
+
         header[0].forEach((name) => {
             option.xAxis.data.push(name);
         });
@@ -96,6 +102,7 @@ class GenericClusteredBarChart extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (this.props !== prevProps) {
+            // eslint-disable-next-line
             this.state.option = null;
             this.setState({
                 option: this.getOption(this.getTitle(), this.look.getCountComparingTwoCategories(this.props.category, this.props.category2), this.props.category, this.props.category2, this.getColors())
@@ -106,10 +113,10 @@ class GenericClusteredBarChart extends React.Component {
     render() {
         if (this.state.option.legend.data.length === this.look.getAllPossible(this.props.category2).length){
             return (
-                <ReactEcharts
-                    option={this.state.option}
-                    style={{ height: '100%', width: '100%' }}
-                />
+                    <ReactEcharts
+                        option={this.state.option}
+                        style={{ height: '100%', width: '100%', backgroundColor: "rgba(90, 90, 90, 0.2)", padding: '2%' }}                        
+                    />
             )
         }
         else{
